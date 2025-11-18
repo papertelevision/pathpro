@@ -1,0 +1,119 @@
+.multiple-select-field__control {
+    position: relative;
+    max-width: 100%;
+    font-size: 14px;
+    padding: 1px 5px 1px 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #e6e6e6 !important;
+    background: #ffffff;
+    box-shadow: unset !important;
+    cursor: pointer !important;
+}
+
+.multiple-select-field__placeholder {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.multiple-select-field__menu {
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.14) !important;
+    border-radius: 5px !important;
+
+    @include breakpoint-down(mobile) {
+        font-size: 13px;
+    }
+
+    &-list {
+        padding: 10px 0 !important;
+    }
+}
+
+.multiple-select-field__value-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.multiple-select-field__value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 15px 5px 3px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 50px;
+    background: $color-gray-f5;
+    color: #000;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    button {
+        color: $color-red-d4;
+    }
+
+    &--higher-padding {
+        padding: 7px 10px;
+    }
+}
+
+.multiple-select-field__value-close-button {
+    all: unset;
+    margin-left: 0.3rem;
+    color: black;
+    transition: fill 0.15s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        color: #bb392d;
+    }
+    &:focus {
+        color: #c82f21;
+    }
+}
+
+.multiple-select-field__indicators {
+    display: none !important;
+}
+
+.multiple-select-field__dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.multiple-select-field-error-message {
+    display: block;
+    padding: 3px;
+    color: red;
+    font-size: 11px;
+}
+
+.multiple-select-field__option {
+    padding: 3px 19px !important;
+    margin-bottom: 2px !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+
+    &--is-focused {
+        color: $color-black-33 !important;
+        background-color: $color-gray-f7 !important;
+    }
+
+    &--is-selected {
+        color: $color-black-33 !important;
+        background-color: $color-gray-e8e !important;
+    }
+}

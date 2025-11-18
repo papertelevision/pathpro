@@ -1,0 +1,208 @@
+.groups {
+    display: flex;
+    gap: 20px;
+
+    @include breakpoint-down(tablet) {
+        flex-direction: column;
+    }
+
+    .box__button.addtask {
+        @include breakpoint-down(tablet) {
+            max-width: unset;
+        }
+    }
+
+    &__actions {
+        padding-right: 19px;
+
+        @include breakpoint-down(tablet) {
+            width: 100%;
+            padding-right: 0px;
+            margin-left: 0;
+        }
+    }
+}
+
+.groups__container {
+    display: flex;
+    flex: 0 0;
+    gap: 20px;
+
+    @include breakpoint-down(tablet) {
+        display: block;
+    }
+
+    .group {
+        @include breakpoint-down(tablet) {
+            flex: unset;
+            margin: 0 0 20px;
+        }
+    }
+}
+
+.group {
+    .group__header {
+        display: flex;
+        justify-content: space-between;
+        min-height: 57px;
+        padding: 11px 13px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #ffffff;
+
+        @include breakpoint-down(mobile) {
+            padding: 5px 10px;
+        }
+    }
+
+    .group__header-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .group__header-icon {
+            display: flex;
+            align-items: center;
+            margin-right: 8px;
+
+            img {
+                width: 32px;
+                height: auto;
+                border-radius: 5px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            path {
+                fill: #ffffff;
+            }
+        }
+
+        .group__header-title {
+            span {
+                display: block;
+            }
+
+            span:nth-child(1) {
+                display: block;
+                max-width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 16px;
+                font-weight: 600;
+
+                @include breakpoint-down(mobile) {
+                    max-width: 150px;
+                    white-space: nowrap;
+                    gap: 5px;
+                    font-size: 14px;
+                }
+
+                path {
+                    fill: $color-gray-97;
+                }
+            }
+
+            span:nth-child(2) {
+                font-size: 12px;
+                margin-right: 1px;
+            }
+
+            i {
+                font-style: normal;
+                font-size: 13px;
+                margin-right: 1px;
+            }
+        }
+    }
+
+    .group__header-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .group__subheader {
+        background-color: $color-gray-e8e;
+        padding: 11px 12px 0;
+    }
+
+    &__actions {
+        padding: 9px 11px 0;
+
+        .box__button.add {
+            padding: 7px;
+            background: linear-gradient(
+                360deg,
+                rgb(243, 245, 246) 0%,
+                rgb(255, 255, 255) 100%
+            );
+        }
+    }
+
+    &__tasks {
+        padding: 11px 11px 0;
+    }
+
+    &__task {
+        display: none;
+        margin-bottom: 9px;
+
+        &.is-visible {
+            display: block;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.group__header-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+
+    span {
+        width: max-content;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: $c-white;
+    }
+}
+
+.group__draggable-container {
+    display: none;
+    flex: 1;
+    width: 474px;
+    height: fit-content;
+    cursor: default;
+
+    @include breakpoint-down(tablet) {
+        width: auto;
+    }
+
+    &.is-visible {
+        display: block;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Group Task
+\* ------------------------------------------------------------ */
+
+.group--task {
+    padding-bottom: 12px;
+    background-color: $color-gray-e8e;
+    border-radius: 8px;
+
+    .group__header {
+        height: 60px;
+    }
+}

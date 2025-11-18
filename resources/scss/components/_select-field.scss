@@ -1,0 +1,106 @@
+.select-field__control {
+    max-width: 100%;
+    padding: 2px 0px 2px 3px !important;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #e6e6e6 !important;
+    background: #ffffff;
+    box-shadow: unset !important;
+    cursor: pointer !important;
+}
+
+.select-field__placeholder {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.select-field__value-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-field__value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 3px 15px 3px 0;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 50px;
+    background: $color-gray-f5;
+    color: #000;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    button {
+        color: $color-red-d4;
+    }
+}
+
+.select-field__value-close-button {
+    all: unset;
+    margin-left: 0.3rem;
+    color: black;
+    transition: fill 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        color: #bb392d;
+    }
+    &:focus {
+        color: #c82f21;
+    }
+}
+
+.select-field__indicator-separator {
+    display: none !important;
+}
+
+.select-field__dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.select-field__menu {
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.14) !important;
+    border-radius: 5px !important;
+
+    &-list {
+        padding: 10px 0 !important;
+    }
+}
+
+.select-field__option {
+    padding: 3px 19px !important;
+    margin-bottom: 2px !important;
+    font-size: 15px !important;
+    font-weight: 400;
+    cursor: pointer !important;
+
+    &--is-focused {
+        color: $color-black-33 !important;
+        background-color: $color-gray-f7 !important;
+    }
+
+    &--is-selected {
+        color: $color-black-33 !important;
+        background-color: $color-gray-e8e !important;
+    }
+}

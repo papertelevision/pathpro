@@ -1,0 +1,30 @@
+.holder-checkboxes {
+    display: flex;
+    margin-top: 20px;
+
+    @include breakpoint-down(tablet) {
+        display: block;
+    }
+
+    label {
+        @include breakpoint-down(mobile) {
+            font-size: 13px;
+        }
+    }
+
+    .holder-checkboxes__left {
+        flex: 0 0 60%;
+    }
+
+    .holder-checkboxes__right {
+        flex: 0 0 40%;
+    }
+
+    .holder-checkboxes__group {
+        margin-bottom: 20px;
+
+        h5 {
+            font-size: 13px;
+        }
+    }
+}

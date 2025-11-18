@@ -1,0 +1,28 @@
+export const formEditSubtaskValues = (subtask) => ({
+    is_task_completed: subtask.task_status.title === 'Complete',
+    title: subtask.title,
+    description: subtask.description,
+    task_type_id: subtask.task_type.id,
+    are_subtasks_allowed: subtask.are_subtasks_allowed,
+    project_id: subtask.project_id,
+    team_members: subtask.team_members.map((item) => ({
+        value: item.id,
+        avatar: item.avatar,
+        label: item.username,
+        entireItem: item,
+    })),
+    community_members: subtask.community_members.map((item) => ({
+        value: item.id,
+        avatar: item.avatar,
+        label: item.username,
+        entireItem: item,
+    })),
+    visibility: subtask.visibility,
+    task_status_id: subtask.task_status.id,
+    are_comments_enabled: subtask.are_comments_enabled,
+    are_stats_public: subtask.are_stats_public,
+    is_task_upvoting_enabled: subtask.is_task_upvoting_enabled,
+    is_comment_upvoting_allowed: subtask.is_comment_upvoting_allowed,
+    are_team_members_visible: subtask.are_team_members_visible,
+    is_creator_visible: subtask.is_creator_visible,
+});

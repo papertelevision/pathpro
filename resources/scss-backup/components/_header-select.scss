@@ -1,0 +1,70 @@
+.header-select {
+    flex: 0 0 200px;
+    margin-right: 5px;
+
+    &__value-container {
+        padding: 0 0 0 8px !important;
+    }
+
+    &__control {
+        display: flex;
+        max-width: 100%;
+        min-height: 35px !important;
+        border: none !important;
+        border-radius: 5px !important;
+        background: $color-blue-0e !important;
+        box-shadow: unset !important;
+        cursor: pointer !important;
+    }
+
+    &__single-value {
+        margin-left: 6px !important;
+        font-size: 14px;
+        font-weight: 400;
+        color: #ffffff !important;
+    }
+
+    &__menu {
+        position: absolute !important;
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.14) !important;
+        border-radius: 5px !important;
+
+        &-list {
+            padding: 10px 0 !important;
+        }
+    }
+
+    &__indicator {
+        color: #ffffff !important;
+
+        svg {
+            width: 15px !important;
+        }
+    }
+
+    &__indicator-separator {
+        display: none !important;
+    }
+
+    &__placeholder {
+        color: #ffffff !important;
+    }
+
+    &__option {
+        padding: 3px 19px !important;
+        margin-bottom: 2px !important;
+        font-size: 15px !important;
+        font-weight: 400;
+        cursor: pointer !important;
+
+        &--is-focused {
+            color: $color-black-33 !important;
+            background-color: $color-gray-f7 !important;
+        }
+
+        &--is-selected {
+            color: $color-black-33 !important;
+            background-color: $color-gray-e8e !important;
+        }
+    }
+}

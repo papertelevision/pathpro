@@ -1,0 +1,70 @@
+.icon-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+
+    &--inline {
+        display: inline-flex;
+        margin: 0 12px 0 0;
+        vertical-align: middle;
+    }
+
+    .icon-button-wrapper__item,
+    .icon-edit {
+        display: inline-flex;
+        width: 35px;
+        height: 35px;
+        border: 1px solid $color-gray-ec;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+
+        @include breakpoint-down(mobile) {
+            width: 25px;
+            height: 25px;
+        }
+
+        &.is-editable {
+            border-color: $color-green-7c;
+
+            path {
+                fill: $color-green-7c;
+            }
+        }
+
+        &.is-editable-bigger {
+            max-width: 41px;
+            max-height: 37px;
+            border-color: $color-green-7c;
+
+            path {
+                fill: $color-green-7c;
+            }
+        }
+
+        path {
+            fill: $color-gray-d1;
+        }
+    }
+
+    .icon-button-wrapper__item {
+        &.margin-left {
+            margin-left: 2px;
+
+            button {
+                max-width: 35px;
+                max-height: 35px;
+                padding: 6px;
+
+                @include breakpoint-down(mobile) {
+                    padding: 2px 6px;
+                }
+            }
+
+            svg {
+                min-width: 35px;
+            }
+        }
+    }
+}

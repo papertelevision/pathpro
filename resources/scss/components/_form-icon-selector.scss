@@ -1,0 +1,270 @@
+/**
+ * Form Icon Selector Styles
+ * Custom dropdown component for selecting predefined icons with visual previews
+ */
+
+.form__icon-selector {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form__icon-selector-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 11px 17px;
+    border: 1px solid $color-gray-e6;
+    border-radius: 5px;
+    background: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(.is-disabled) {
+        border-color: #ccc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    &.is-active {
+        border-color: $color-blue-8e;
+        box-shadow: 0 0 0 3px rgba($color-blue-8e, 0.1);
+    }
+
+    &.is-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: $color-gray-f1;
+    }
+}
+
+.form__icon-selector-trigger-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.form__icon-selector-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.form__icon-selector-icon {
+    width: 20px;
+    height: 20px;
+    color: $color-black-33;
+}
+
+.form__icon-selector-label {
+    font-weight: 500;
+    color: $color-black-33;
+}
+
+.form__icon-selector-placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.form__icon-selector-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form__icon-selector-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #999;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $color-red-e9;
+    }
+}
+
+.form__icon-selector-arrow {
+    color: #999;
+    font-size: 10px;
+    transition: transform 0.2s ease;
+
+    .is-active & {
+        transform: rotate(180deg);
+    }
+}
+
+.form__icon-selector-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid $color-gray-e6;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.2s ease;
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.form__icon-selector-search {
+    padding: 12px;
+    border-bottom: 1px solid $color-gray-e6;
+
+    input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid $color-gray-e6;
+        border-radius: 4px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+
+        &:focus {
+            border-color: $color-blue-8e;
+            box-shadow: 0 0 0 3px rgba($color-blue-8e, 0.1);
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+}
+
+.form__icon-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    padding: 12px;
+    overflow-y: auto;
+    max-height: 280px;
+
+    @include breakpoint-down(mobile) {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    }
+}
+
+.form__icon-selector-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: $color-gray-f1;
+        border-color: $color-gray-e6;
+    }
+
+    &.is-selected {
+        background: rgba($color-blue-8e, 0.1);
+        border-color: $color-blue-8e;
+
+        .form__icon-selector-option-icon {
+            color: $color-blue-8e;
+        }
+
+        .form__icon-selector-option-name {
+            color: $color-blue-8e;
+            font-weight: 600;
+        }
+    }
+}
+
+.form__icon-selector-option-icon {
+    width: 24px;
+    height: 24px;
+    color: $color-black-33;
+    transition: color 0.2s ease;
+}
+
+.form__icon-selector-option-name {
+    font-size: 11px;
+    text-align: center;
+    color: #666;
+    line-height: 1.3;
+    font-weight: 500;
+    word-break: break-word;
+    transition: color 0.2s ease;
+
+    @include breakpoint-down(mobile) {
+        font-size: 10px;
+    }
+}
+
+.form__icon-selector-empty {
+    grid-column: 1 / -1;
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}
+
+.form__icon-selector-footer {
+    padding: 8px 12px;
+    border-top: 1px solid $color-gray-e6;
+    background: $color-gray-f1;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+// Responsive adjustments
+@include breakpoint-down(tablet) {
+    .form__icon-selector-dropdown {
+        max-height: 350px;
+    }
+
+    .form__icon-selector-grid {
+        max-height: 230px;
+    }
+}
+
+@include breakpoint-down(mobile) {
+    .form__icon-selector-dropdown {
+        max-height: 300px;
+    }
+
+    .form__icon-selector-grid {
+        max-height: 180px;
+        gap: 6px;
+    }
+
+    .form__icon-selector-option {
+        padding: 10px 6px;
+    }
+}

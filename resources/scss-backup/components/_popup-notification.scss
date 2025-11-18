@@ -1,0 +1,44 @@
+.popup-notification {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    position: fixed;
+    z-index: 21;
+    padding: 10px 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    opacity: 0;
+
+    svg {
+        fill: #ffffff;
+    }
+
+    path {
+        fill: #ffffff;
+    }
+
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+
+    &.is-visible {
+        display: inline-flex;
+        opacity: 1;
+    }
+
+    &.green {
+        background: $color-green-65;
+    }
+
+    &.blue {
+        background: $color-blue-0e;
+    }
+
+    &.red {
+        background: $color-red-e9;
+    }
+}

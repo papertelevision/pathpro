@@ -1,0 +1,29 @@
+.infinite-scroll-component {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include breakpoint-down(tablet) {
+        flex-direction: column;
+    }
+
+    &__outerdiv {
+        width: 100%;
+    }
+
+    &__loader-button {
+        width: 100%;
+        padding: 15px 0;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 400;
+        background: $color-gray-ec;
+        border: none;
+        transition: background 0.3s;
+
+        &:hover {
+            background: $color-gray-e6;
+        }
+    }
+}

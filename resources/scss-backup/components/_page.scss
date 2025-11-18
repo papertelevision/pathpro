@@ -1,0 +1,90 @@
+.page {
+    flex: 1;
+    padding: 22px 15px 0 22px;
+    overflow-y: scroll;
+
+    @include breakpoint-down(mobile) {
+        padding: 10px 10px 0 10px;
+
+        @include expandPageContent();
+    }
+
+    &.is-upper {
+        padding-top: 5px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px;
+
+        &:horizontal {
+            height: 6px;
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-gray-aa;
+        border-radius: 6px;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: $color-gray-aa transparent;
+
+    &.is-white {
+        background: $c-white;
+    }
+
+    &.is-gray {
+        background: $color-gray-d5;
+    }
+}
+
+.nav-is-open {
+    .page {
+        @include breakpoint-down(mobile) {
+            @include normalizePageContent();
+        }
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Page Fallback
+\* ------------------------------------------------------------ */
+.page--fallback {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ------------------------------------------------------------ *\
+    Page Stripe Product
+\* ------------------------------------------------------------ */
+.page--stripe-product {
+    padding: 0 0 44px !important;
+    overflow: auto;
+}
+
+/* ------------------------------------------------------------ *\
+    Page Roadmap
+\* ------------------------------------------------------------ */
+.page--roadmap {
+    overflow-x: auto;
+    cursor: grab;
+
+    @include breakpoint-down(mobile) {
+        overflow-x: hidden;
+    }
+
+    &.is-dragging .group__draggable-container {
+        cursor: unset !important;
+    }
+}

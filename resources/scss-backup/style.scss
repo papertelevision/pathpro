@@ -1,0 +1,137 @@
+/* ------------------------------------------------------------ *\
+  Vendor
+\* ------------------------------------------------------------ */
+
+//@import '~vendor-name/vendor.scss/css';
+
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import 'generic/variables';
+@import 'generic/functions';
+@import 'generic/mixins';
+@import 'generic/reset';
+@import 'generic/fonts';
+@import 'generic/base';
+@import 'generic/helpers';
+
+/* ------------------------------------------------------------ *\
+	Components
+\* ------------------------------------------------------------ */
+
+@import 'components/base-layout';
+
+@import 'components/login';
+
+@import 'components/header';
+
+@import 'components/subheader';
+
+@import 'components/button';
+
+@import 'components/button-deny';
+
+@import 'components/sidebar';
+
+@import 'components/page';
+
+@import 'components/project';
+
+@import 'components/modal';
+
+@import 'components/form';
+
+@import 'components/form-icon-picker';
+
+@import 'components/form-color-picker';
+
+@import 'components/group';
+
+@import 'components/progressbar';
+
+@import 'components/box';
+
+@import 'components/dots';
+
+@import 'components/accordion';
+
+@import 'components/suggestion';
+
+@import 'components/table';
+
+@import 'components/filter';
+
+@import 'components/btn-back';
+
+@import 'components/flex-row';
+
+@import 'components/icon-button-wrapper';
+
+@import 'components/user-row';
+
+@import 'components/holder-checkboxes';
+
+@import 'components/holder-details';
+
+@import 'components/loader';
+
+@import 'components/form-boxes';
+
+@import 'components/multiple-select-field';
+
+@import 'components/reply-section';
+
+@import 'components/select-field';
+
+@import 'components/header-select';
+
+@import 'components/alert-box';
+
+@import 'components/filter-select';
+
+@import 'components/multi-react-select';
+
+@import 'components/filter-button';
+
+@import 'components/subheader-select-field';
+
+@import 'components/bulk-actions-select';
+
+@import 'components/popup-notification';
+
+@import 'components/account-menu';
+
+@import 'components/comments-filter';
+
+@import 'components/infinite-scroll-component';
+
+@import 'components/react-datepicker';
+
+@import 'components/input-upload-file';
+
+@import 'components/react-tooltip';
+
+@import 'components/widget';
+
+@import 'components/holder-widgets';
+
+@import 'components/select';
+
+@import 'components/section';
+
+@import 'components/rich-text-editor';
+
+@import 'components/feature-group-info';
+
+@import 'components/repeater';
+
+@import 'components/project-header';
+
+@import 'components/footer';
+
+/* ------------------------------------------------------------ *\
+	Overwrites
+\* ------------------------------------------------------------ */
+
+//@import 'overwrites/';

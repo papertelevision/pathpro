@@ -1,0 +1,8 @@
+.reply-section {
+    display: none;
+
+    &.is-active {
+        display: block;
+        width: 100%;
+    }
+}

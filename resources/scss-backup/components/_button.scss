@@ -1,0 +1,353 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    padding: 0 15px;
+    font-size: 14px;
+    border: 1px solid $color-gray-e6;
+
+    @include breakpoint-down(mobile) {
+        white-space: nowrap;
+    }
+
+    svg {
+        margin: 0 10px 0 0;
+    }
+
+    &.has-opacity {
+        pointer-events: none;
+        opacity: 0.25;
+    }
+
+    &.rounded {
+        border-radius: 30px;
+
+        @include breakpoint-down(mobile) {
+            border-radius: 15px;
+        }
+    }
+
+    &.medium {
+        padding: 0 16px;
+    }
+
+    &.larger {
+        height: 32px;
+        padding: 0 23px;
+    }
+
+    &.mobile-full {
+        @include breakpoint-down(mobile) {
+            width: 100%;
+        }
+    }
+
+    &.white {
+        background: $c-white;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            box-shadow: 0 0 3px 1px $color-gray-e6;
+        }
+    }
+
+    &.blue {
+        background: $color-blue-0e9;
+        color: $c-white;
+        border: none;
+        transition: box-shadow $t-duration, opacity $t-duration;
+
+        &:hover {
+            box-shadow: 0 0 1px 1px $color-blue-0e9;
+            opacity: 0.8;
+        }
+    }
+
+    &.green {
+        background: $color-green-65;
+        color: $c-white;
+        transition: box-shadow $t-duration, opacity $t-duration;
+
+        &:hover {
+            box-shadow: 0 0 1px 1px $color-green-65;
+            opacity: 0.8;
+        }
+    }
+
+    &.dark {
+        padding: 10px 17px;
+        background: $color-black-54;
+        color: $c-white;
+        transition: box-shadow $t-duration, opacity $t-duration;
+
+        &:hover {
+            box-shadow: 0 0 1px 1px $color-black-48;
+            opacity: 0.8;
+        }
+    }
+
+    &.black {
+        height: 34px;
+        padding: 0 15px;
+        background: $color-black-52;
+        color: $c-white;
+        transition: box-shadow $t-duration, opacity $t-duration;
+
+        &:hover {
+            box-shadow: 0 0 1px 1px $color-black-48;
+            opacity: 0.8;
+        }
+
+        &.gray {
+            background: $color-black-54;
+        }
+    }
+
+    &.red-text {
+        background: $c-white;
+        border: 1px solid $c-white;
+        border-radius: 30px;
+        color: $color-red-f76;
+        opacity: 1;
+        transition: opacity $t-duration, text-decoration $t-duration;
+
+        &:hover {
+            opacity: 0.3;
+            text-decoration: underline;
+        }
+    }
+
+    &.blue-text {
+        padding-left: 0px;
+        background: $c-white;
+        border: none;
+        color: $color-blue-10;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.4;
+        }
+    }
+
+    &.black-text {
+        font-size: 15px;
+        border: none;
+        background: $c-white;
+        transition: opacity 0.4s;
+        color: $color-black-33;
+
+        &:hover {
+            opacity: 0.4;
+        }
+    }
+
+    &.close {
+        padding: 5px 0px;
+        background: $c-white;
+        border: none;
+        color: $color-red-ed;
+
+        &:hover {
+            opacity: 0.4;
+        }
+    }
+
+    &.margin {
+        margin-top: 10px;
+    }
+
+    &.blue-gradient {
+        max-height: 30px;
+        font-weight: 600;
+        border: none;
+        color: #fff;
+        background: linear-gradient(
+            180deg,
+            rgb(16, 189, 255) 0%,
+            rgb(11, 107, 227) 100%
+        );
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.button:disabled,
+.button[disabled] {
+    display: none;
+    background: #f2f2f2 !important;
+    border: none;
+}
+
+.button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    opacity: 1;
+
+    &.is-hidden {
+        visibility: hidden;
+    }
+
+    .edit-settings {
+        transition: transform 0.5s;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    path {
+        fill: $c-white;
+    }
+
+    &.blue {
+        path {
+            fill: $color-blue-10;
+        }
+    }
+
+    &.gray {
+        path {
+            fill: $color-gray-70;
+        }
+    }
+
+    &.lighter-gray {
+        path {
+            fill: $color-gray-45;
+        }
+    }
+
+    &.has-border {
+        height: fit-content;
+        padding: 7px;
+        border: 1px solid $color-gray-ee;
+        border-radius: 5px;
+        transition: background $t-duration;
+
+        &:hover {
+            background: $color-gray-ee;
+        }
+    }
+}
+
+.button--widget {
+    padding: 10px 17px;
+    font-size: 15px;
+    color: $color-black-33;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 6px;
+    background-color: $color-gray-f8;
+    opacity: 1;
+    transition: opacity $t-duration;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.darker {
+        width: 100%;
+        padding: 13px 17px;
+        color: $c-white;
+        background-color: $color-black-62;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Button Rectangular
+\* ------------------------------------------------------------ */
+
+.button--rectangular {
+    width: 201px;
+    padding: 15px;
+    font-size: 16px;
+    color: $c-white;
+    background-color: $color-red-f76;
+    border: none;
+    transition: opacity $t-duration;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.is-blue,
+    &.is-dark {
+        width: 144px;
+        padding: 12px 16px;
+        font-size: 17px;
+        font-weight: 500;
+        border-radius: 5px;
+        color: $c-white;
+        background-color: $color-blue-0e9;
+        border: none;
+    }
+
+    &.is-white {
+        width: 144px;
+        padding: 12px 16px;
+        font-size: 17px;
+        color: $c-black;
+        background-color: $c-white;
+        border: 1px solid $color-red-f0;
+        border-radius: 5px;
+    }
+
+    &.is-dark {
+        background-color: $color-black-54;
+    }
+
+    &.is-red {
+        width: fit-content;
+        min-height: unset;
+        border-radius: 4px;
+        background-color: $color-red-e6;
+    }
+
+    &.is-transparent {
+        width: fit-content;
+        min-height: unset;
+        border-radius: 4px;
+        border: 1px solid $color-gray-e6;
+        background-color: unset;
+        color: $color-black-33;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Button Add Record
+\* ------------------------------------------------------------ */
+
+.button--add-record {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 2px;
+    background: linear-gradient(
+        360deg,
+        rgb(243, 245, 246) 0%,
+        rgb(255, 255, 255) 100%
+    );
+    border: 1px solid $color-gray-df;
+    border-radius: 2px;
+    opacity: 1;
+    transition: opacity $t-duration;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    img {
+        width: 13px;
+        height: 13px;
+        margin-right: 9px;
+    }
+
+    &.no-border {
+        border: none;
+    }
+}

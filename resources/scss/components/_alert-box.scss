@@ -1,0 +1,175 @@
+.alert-box {
+    display: none;
+}
+
+.alert-box {
+    &.is-active {
+        position: fixed;
+        display: block;
+        height: 100%;
+        width: 100%;
+        inset: 0px;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-radius: 8px;
+        z-index: 21;
+    }
+
+    .alert-box__content {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        width: 100%;
+        max-width: 450px;
+        background: $c-white;
+        border: 1px solid $color-gray-e6;
+        border-radius: inherit;
+        box-shadow: 0px 0px 125px 0px rgba(13, 13, 13, 0.13);
+    }
+
+    .alert-box__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 48px;
+        padding: 0 20px;
+        background: $color-black-54;
+        border-radius: inherit;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .alert-box__title {
+        font-size: 14px;
+        font-weight: 600;
+        color: $c-white;
+    }
+
+    .alert-box__message {
+        padding: 40px;
+
+        p {
+            text-align: center;
+            margin-bottom: 0;
+        }
+    }
+
+    .alert-box__message__action {
+        text-align: center;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #e6e6e6;
+
+        label {
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        small {
+            margin-left: 10px;
+            text-align: center;
+        }
+    }
+
+    .alert-box__message__action__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
+    .alert-box__footer {
+        display: flex;
+        justify-content: center;
+        padding: 10px 16px;
+        border: none;
+        border-top: 1px solid #e6e6e6;
+
+        .button.red-text {
+            margin-right: 20px;
+        }
+    }
+
+    .alert-box__button {
+        background: none;
+        border: none;
+
+        span {
+            position: relative;
+            display: block;
+            width: 15px;
+            height: 14px;
+            transition: opacity 0.3s;
+
+            &:hover {
+                opacity: 0.3;
+            }
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 1px;
+                background-color: #fff;
+            }
+
+            &:before {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+    }
+}
+
+///
+// Alert Box Remove Member
+// ==========================================================================
+
+.alert-box--remove-member {
+    .alert-box__content {
+        width: 450px;
+        height: 490px;
+    }
+
+    .alert-box__message {
+        padding: 14px 20px 18px;
+
+        p {
+            font-size: 14px;
+            line-height: 1.714;
+        }
+    }
+
+    .alert-box__message__action {
+        padding-top: 14px;
+        margin-top: 11px;
+
+        small {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.615;
+        }
+    }
+
+    .alert-box__message__action:nth-of-type(2) {
+        .alert-box__message__action__inner {
+            margin-bottom: 9px;
+        }
+    }
+
+    .alert-box__message__action__inner {
+        margin-bottom: 3px;
+    }
+
+    .alert-box__footer {
+        padding: 16px 0;
+    }
+}

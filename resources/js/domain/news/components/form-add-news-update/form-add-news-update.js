@@ -1,0 +1,126 @@
+/**
+ * External dependencies
+ */
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import qs from 'qs';
+
+/**
+ * Internal dependencies
+ */
+import Button from '@app/components/button/button';
+import Form from '@app/components/form/form';
+import FormField from '@app/components/form/form-field';
+import RichTextEditor from '@app/components/rich-text-editor/rich-text-editor';
+import useNewsStoreMutation from '@app/data/news/use-news-store-mutation';
+
+const projectSlug = document.getElementById('root').getAttribute('projectSlug');
+
+const schema = yup.object().shape({
+    title: yup.string().required('This field is required.'),
+    description: yup.mixed().required('This field is required.'),
+});
+
+const FormAddNewsUpdate = ({
+    closeModal,
+    setIsFormChanged,
+    setIsAddNewsModalOpen,
+    currentTablePage,
+}) => {
+    const location = useLocation();
+    const queryArgs = qs.parse(location?.search, { ignoreQueryPrefix: true });
+
+    const { mutate: store } = useNewsStoreMutation(
+        projectSlug,
+        currentTablePage,
+        queryArgs
+    );
+
+    const methods = useForm({
+        mode: 'all',
+        resolver: yupResolver(schema),
+        defaultValues: {
+            title: '',
+            is_draft: false,
+            description: '',
+        },
+    });
+
+    const handleFormSubmit = (values) =>
+        store(values, {
+            onSuccess: () => {
+                setIsAddNewsModalOpen(false);
+            },
+        });
+
+    const handleClickCancelButton = () => {
+        setIsFormChanged(Object.keys(methods.formState.dirtyFields).length > 0);
+        closeModal();
+    };
+
+    useEffect(() => {
+        setIsFormChanged(Object.keys(methods.formState.dirtyFields).length > 0);
+        return () => setIsFormChanged(false);
+    }, [methods.formState]);
+
+    return (
+        <FormProvider {...methods}>
+            <Form onSubmit={methods.handleSubmit(handleFormSubmit)} modifier="news" noValidate>
+                <Form.Content>
+                    <Form.ColLeft maxWidth>
+                        <div className="form__col-head">
+                            <h3>Add News Update</h3>
+                            <button
+                                type="button"
+                                onClick={closeModal}
+                                className="news-close-btn"
+                                aria-label="Close"
+                            >
+                                ✕
+                            </button>
+                        </div>
+                        <FormField title="Title" id="title" name="title" />
+                        <RichTextEditor
+                            label="Description"
+                            name="description"
+                            larger
+                        />
+                    </Form.ColLeft>
+                </Form.Content>
+                <Form.Footer justify>
+                    <div className="form__footer-group">
+                        <Button
+                            type="button"
+                            color="is-transparent"
+                            modifier="rectangular"
+                            onClick={handleClickCancelButton}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            type="submit"
+                            color="is-transparent"
+                            modifier="rectangular"
+                            onClick={() => methods.setValue('is_draft', true)}
+                        >
+                            Save As Draft
+                        </Button>
+                        <Button
+                            type="submit"
+                            modifier="rectangular"
+                            color="is-red"
+                            onClick={() => methods.setValue('is_draft', false)}
+                        >
+                            Publish News Update
+                        </Button>
+                    </div>
+                </Form.Footer>
+            </Form>
+        </FormProvider>
+    );
+};
+
+export default FormAddNewsUpdate;

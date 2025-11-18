@@ -1,0 +1,145 @@
+//Variables
+$font-size-base: 1.6rem;
+$font-weight-base: 400;
+$line-height-base: 1.2;
+
+$ff-poppins: 'Poppins', sans-serif;
+$ff-serif: Georgia, 'Times New Roman', Times, serif;
+
+$t-duration: 0.4s;
+
+$shell-max-width: 114rem;
+$shell-gutter: 1.5rem;
+
+$sidebar-width: 45px;
+
+$c-black: #000;
+$c-white: #fff;
+$c-base: #055590;
+
+$color-white-f0: #f0f2f3;
+$color-white-f2: #f2f2f2;
+$color-white-f9: #f9f9f9;
+$color-gray-aa: #aaaaaa;
+$color-gray-ae: #aeb9c1;
+$color-gray-c9: #c9ced4;
+$color-gray-e6: #e6e6e6;
+$color-gray-b6: #b6b6b6;
+$color-gray-be: #bec5cb;
+$color-gray-c8: #c8c8c8;
+$color-gray-f1: #f1f4f6;
+$color-gray-fb: #fbfbfb;
+$color-gray-f3: #f3f5f5;
+$color-gray-f6: #f6f7f7;
+$color-gray-f7: #f7f9f9;
+$color-gray-9c: #9c9c9c;
+$color-gray-f8: #f8f8f8;
+$color-gray-ee: #eeeeee;
+$color-gray-ec: #ececec;
+$color-gray-e8: #e8e8e8;
+$color-gray-e8e: #e8ebee;
+$color-gray-ed: #edf0f2;
+$color-gray-d6: #d6d6d6;
+$color-gray-d5: #d5dade;
+$color-gray-df: #dfdfdf;
+$color-gray-dd: #dddddd;
+$color-gray-ab: #abb6be;
+$color-gray-a6: #a6a6a6;
+$color-gray-a3: #a3a3a3;
+$color-gray-c9: #c9d0d6;
+$color-gray-f3: #f3f5f6;
+$color-gray-6c: #6c6c6c;
+$color-gray-70: #707070;
+$color-gray-72: #727272;
+$color-gray-77: #777777;
+$color-gray-7c: #7c8593;
+$color-gray-82: #828b97;
+$color-gray-9f: #9f9f9f;
+$color-gray-97: #979797;
+$color-gray-ea: #eaeaea;
+$color-gray-fa: #fafbfd;
+$color-gray-f4: #f4f6f7;
+$color-gray-f5: #f5f5f5;
+$color-gray-f8: #f8f9f8;
+$color-gray-b3: #b3b3b3;
+$color-gray-bc: #bcc5cd;
+$color-gray-cb: #cbcbcb;
+$color-gray-d1: #d1d1d1;
+$color-gray-45: #454545;
+$color-gray-55: #555555;
+$color-gray-78: #78859e;
+$color-gray-86: #868686;
+$color-gray-98: #989898;
+$color-gray-ef: #efefef;
+$color-blue-10: #10bdff;
+$color-blue-24: #24bffa;
+$color-blue-23: #23c5f3;
+$color-blue-45: #4596dd;
+$color-blue-3C: #3cc1f4;
+$color-blue-4F: #4fc7ee;
+$color-blue-0e9: #0e97e2;
+$color-blue-0ea: #0ea4f6;
+$color-blue-22: #22b1e7;
+$color-blue-0f: #0fabf9;
+$color-blue-58: #58a6ff;
+$color-blue-0e: #0e98e3;
+$color-blue-4b: #77b2ea;
+$color-blue-32: #32a5da;
+$color-blue-8e: #8ec3f5;
+$color-red-c8: #c84863;
+$color-red-ed9b: #ed9b9b;
+$color-red-f0: #f0b7b4;
+$color-red-f9: #f9483e;
+$color-red-ed: #ed365d;
+$color-red-e9: #e96137;
+$color-red-d1: #d12c2c;
+$color-red-de: #de5353;
+$color-red-d4: #d44343;
+$color-red-d6: #d65d5d;
+$color-red-e0: #e03753;
+$color-red-ca: #ca5151;
+$color-red-f7: #f7736c;
+$color-red-f8: #f87171;
+$color-red-f76: #f7665e;
+$color-red-fe: #fef2f2;
+$color-red-e1: #e17973;
+$color-red-ee: #ee6157;
+$color-red-e6: #e66f64;
+$color-black-48: #484848;
+$color-black-52: #525e6a;
+$color-black-54: #545458;
+$color-black-33: #333333;
+$color-black-44: #444444;
+$color-black-1c: #1c1c1c;
+$color-black-13: #131313;
+$color-black-62: #626b7d;
+$color-black-70: #707070;
+$color-green-65: #65c870;
+$color-green-61: #65c870;
+$color-green-61b: #61bf7d;
+$color-green-5e: #5ec56a;
+$color-green-58: #58cb58;
+$color-green-2a: #2ac644;
+$color-green-2c: #2cc646;
+$color-green-61: #61a664;
+$color-green-4a: #4a9b64;
+$color-green-6a: #6ab683;
+$color-green-38: #38c725;
+$color-green-7c: #7cb487;
+$color-green-7f: #7fc776;
+$color-green-82: #82ba8a;
+$color-green-ed: #edf6ec;
+$color-green-bd: #bdded0;
+
+$responsive-ios: 812px;
+
+$breakpoints: (
+    mobile-small: 374px,
+    mobile-medium: 575px,
+    mobile: 767px,
+    admin-bar: 782px,
+    tablet: 1023px,
+    small-desktop: 1199px,
+    large-desktop: 1399px,
+    huge-desktop: 1800px,
+);

@@ -1,0 +1,450 @@
+/* ------------------------------------------------------------ *\
+    Section
+\* ------------------------------------------------------------ */
+.section {
+    &__header {
+        border-bottom: 1px solid $color-gray-e6;
+
+        &__row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            @media (max-width: 850px) {
+                font-size: 14px;
+                gap: 15px !important;
+            }
+
+            &:first-child {
+                gap: 9px;
+                padding: 13px;
+                background-color: $color-green-bd;
+
+                p {
+                    font-weight: 600;
+                    font-size: 15px;
+                }
+
+                img {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            &:last-child {
+                gap: 28px;
+                width: fit-content;
+                padding: 10px;
+                margin: auto;
+
+                @include breakpoint-down(mobile) {
+                    flex-direction: column;
+                    gap: 20px !important;
+                }
+            }
+
+            img {
+                width: 105px;
+                height: 55px;
+            }
+
+            a {
+                position: relative;
+                padding: 6px 23px;
+                font-size: 15px;
+                border: 1px solid $color-gray-e6;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+        }
+
+        &-divider {
+            display: inline-block;
+            height: 70px;
+            width: 1px;
+            background-color: $color-gray-e6;
+            vertical-align: middle;
+
+            @include breakpoint-down(mobile) {
+                height: 1px;
+                width: 70px;
+            }
+        }
+    }
+
+    &__body {
+        display: flex;
+        justify-content: center;
+        max-width: 876px;
+        margin: 30px auto 0 auto;
+        overflow: hidden;
+
+        @include breakpoint-down(mobile) {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+    &__left {
+        flex: 1 1 41%;
+        padding: 29px 35px;
+        background-color: $color-gray-f5;
+        border: solid 1px $color-gray-e8;
+        border-right: none;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    &__right {
+        flex: 1 1 55%;
+        background-color: $c-white;
+        border: solid 1px $color-gray-e8;
+        border-left: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        .form--authenticate .form__inner {
+            padding: 45px 50px 42px 34px !important;
+        }
+    }
+
+    &__row {
+        margin-bottom: 21px;
+
+        h1 {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        h1 strong {
+            font-size: 48px;
+        }
+
+        h1 span {
+            display: block;
+            font-size: 30px;
+            text-decoration: line-through;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 17px;
+        }
+
+        h6 {
+            font-size: 17px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        &.has-border {
+            margin-bottom: 21px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #d6d6d6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                position: relative;
+                margin-bottom: 8px;
+                padding-left: 20px;
+                font-size: 15px;
+                font-weight: 600;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+                    width: 17px;
+                    height: 13px;
+                    background: url(../../images/green-tick.png) no-repeat
+                        center / contain;
+                }
+            }
+        }
+
+        ul ul {
+            padding: 6px 20px 14px 20px;
+            margin-bottom: 0;
+
+            li {
+                padding-left: 24px;
+                margin-bottom: 14px;
+                font-weight: 400;
+
+                &:before {
+                    width: 14px;
+                    height: 10px;
+                    top: 5px;
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            margin-bottom: 15px;
+        }
+
+        &:nth-child(3) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__nav {
+        max-width: 288px;
+        margin: 0 auto;
+
+        ul {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            padding: 1px;
+            font-size: 14px;
+            list-style-type: none;
+            background: $color-red-e1;
+            border-radius: 40px;
+        }
+
+        li {
+            width: 50%;
+        }
+
+        li button {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 12px 14px;
+            text-align: center;
+            font-weight: 600;
+            background: none;
+            border: none;
+            border-radius: 40px;
+            transition: background $t-duration, color $t-duration;
+            color: $c-white;
+            line-height: 1.28;
+            z-index: 10;
+
+            &:hover {
+                color: $color-black-33;
+            }
+        }
+
+        li.is-current button {
+            color: $color-black-33;
+            border-radius: 40px;
+        }
+
+        &-animation {
+            position: absolute;
+            top: 1px;
+            height: calc(100% - 2px);
+            transition: all 0.5s ease 0s;
+            border-radius: 40px;
+        }
+
+        li.is-current:nth-child(1) ~ .section__nav-animation {
+            width: calc(50% - 1px);
+            left: 1px;
+            background-color: $c-white;
+        }
+
+        li.is-current:nth-child(2) ~ .section__nav-animation {
+            width: calc(50% - 1px);
+            left: 50%;
+            background-color: $c-white;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+        max-width: 876px;
+        margin: 18px auto 0 auto;
+        padding: 13px;
+        border-radius: 6px;
+        background-color: #f7f7f7;
+
+        &-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-right: 50px;
+
+            img {
+                height: 53px;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 1.46;
+            }
+        }
+
+        &-group--padlock {
+            gap: 0;
+
+            img {
+                height: 65px;
+            }
+
+            p {
+                margin-left: -7px;
+            }
+        }
+    }
+}
+
+/* ------------------------------------------------------------ *\
+	Section Stripe Products
+\* ------------------------------------------------------------ */
+
+.section--stripe-products {
+    .section__header {
+        margin: 0 auto 23px auto;
+        border: none;
+
+        &__row {
+            flex-direction: column;
+            gap: unset;
+            max-width: 675px;
+            padding: 0;
+            text-align: center;
+            background: unset;
+        }
+
+        &__row h2 {
+            margin-bottom: 11px;
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        &__row p {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 1.714286;
+        }
+    }
+
+    .section__body {
+        flex-wrap: wrap;
+        max-width: unset;
+        padding: 0 22px;
+        margin: 23px auto 0 auto;
+        border: none;
+
+        @include breakpoint-down(small-desktop) {
+            row-gap: 10px;
+        }
+    }
+
+    .section__col {
+        height: fit-content;
+        flex: 1;
+        padding: 0px;
+        margin-left: -1px;
+
+        @include breakpoint-down(small-desktop) {
+            flex: 0 0 50%;
+        }
+
+        &-inner {
+            border: solid 1px $color-gray-e8;
+        }
+
+        &-inner.is-recommended {
+            position: relative;
+            border: 1px solid $color-red-e9;
+        }
+    }
+
+    .section__row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        margin-bottom: 0;
+
+        &:nth-child(1) {
+            gap: 10px;
+            min-height: 367px;
+            padding: 20px 20px 28px;
+            border-bottom: solid 1px $color-gray-e8;
+
+            @media (max-width: 1270px) {
+                padding: 20px 14px 28px;
+            }
+
+            @include breakpoint-down(small-desktop) {
+                padding: 20px 20px 28px;
+            }
+        }
+
+        &:nth-child(2) {
+            padding: 29px 20px 21px;
+
+            @media (max-width: 1270px) {
+                padding: 29px 14px 21px;
+            }
+
+            @include breakpoint-down(small-desktop) {
+                padding: 29px 20px 21px;
+            }
+        }
+
+        h2 {
+            margin-bottom: 23px;
+        }
+
+        h1 {
+            margin-bottom: 18px;
+
+            strong {
+                font-size: 37px;
+            }
+        }
+
+        ul li {
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 15px;
+
+            &:nth-child(1) {
+                margin-bottom: 0;
+            }
+        }
+
+        ul ul {
+            padding: 14px 0px 0px 23px;
+            margin-bottom: 31px;
+
+            li {
+                margin-bottom: 13px !important;
+            }
+        }
+
+        &-text p {
+            line-height: 1.59;
+        }
+
+        &-text--yearly {
+            margin-bottom: 18px;
+        }
+    }
+}

@@ -1,0 +1,177 @@
+.subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    padding: 0 25px 0 22px;
+    background-color: $c-white;
+    z-index: 1;
+
+    @include breakpoint-down(mobile) {
+        left: 0;
+        flex-wrap: wrap;
+        gap: 5px;
+        height: fit-content;
+        padding: 0 10px;
+        min-height: 44px;
+
+        @include expandPageContent();
+    }
+
+    @media (max-width: 500px) {
+        gap: 10px;
+        justify-content: center;
+        padding: 5px 10px;
+    }
+
+    &.is-gray {
+        background: $color-gray-d5;
+
+        @media (max-width: 500px) {
+            justify-content: space-between;
+        }
+    }
+
+    .subheader__left {
+        display: flex;
+        align-items: center;
+
+        .subheader__title {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+
+            span {
+                display: block;
+                max-width: 500px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            strong {
+                display: block;
+                max-width: 500px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &.separator {
+                &::after {
+                    content: '';
+                    height: 15px;
+                    width: 1px;
+                    margin: 0 8px 0 2px;
+                    background-color: $color-black-70;
+                }
+
+                span {
+                    margin-right: 4px;
+                }
+            }
+
+            svg {
+                vertical-align: middle;
+                padding-top: 4px;
+            }
+
+            svg path {
+                fill: $color-gray-7c;
+            }
+        }
+
+        .subheader__content {
+            display: block;
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 500;
+
+            i {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 14px;
+                font-weight: 600;
+                font-style: normal;
+            }
+        }
+    }
+
+    .subheader__right {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+
+        @include breakpoint-down(mobile) {
+            gap: 5px;
+        }
+    }
+
+    .subheader__divider {
+        display: inline-block;
+        width: 1px;
+        height: 15px;
+        background-color: $color-black-44;
+        margin: 0 5px;
+        vertical-align: middle;
+
+        @include breakpoint-down(mobile) {
+            height: 9px;
+        }
+    }
+
+    .subheader__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        @include breakpoint-down(mobile) {
+            gap: 5px;
+        }
+    }
+
+    b {
+        font-size: 14px;
+    }
+}
+
+.nav-is-open {
+    .subheader {
+        @include breakpoint-down(mobile) {
+            @include normalizePageContent();
+        }
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Subheader Dashboard
+\* ------------------------------------------------------------ */
+.subheader--dashboard {
+    min-height: 77px;
+    padding: 25px 58px 0 55px;
+    background-color: $c-white;
+
+    .subheader__content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid rgb(215, 215, 215);
+    }
+
+    .subheader__title {
+        display: block;
+        max-width: 500px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px !important;
+    }
+}

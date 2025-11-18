@@ -1,0 +1,37 @@
+.dots {
+    display: flex;
+    gap: 3px;
+    padding: 7px 0;
+
+    .dots__dot {
+        height: 4px;
+        width: 4px;
+        background: #818c97;
+        border-radius: 50%;
+        margin-right: 0;
+    }
+}
+
+.dots--draggable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    width: 24px;
+    padding: 0;
+    background-color: $color-white-f9;
+    border-right: 1px solid $color-gray-e6;
+
+    .dots__group {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .dots__dot {
+        height: 2px;
+        width: 2px;
+        background: $color-gray-97;
+    }
+}

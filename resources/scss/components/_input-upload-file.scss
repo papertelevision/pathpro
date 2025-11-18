@@ -1,0 +1,69 @@
+.input-upload-file {
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    margin-bottom: 20px;
+
+    strong {
+        font-size: 14px;
+        margin-right: 15px;
+
+        @include breakpoint-down(mobile) {
+            font-size: 13px;
+        }
+    }
+
+    img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        @include breakpoint-down(tablet) {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    &:hover {
+        .form__row-avatar-img {
+            -webkit-filter: blur(2px);
+            filter: blur(2px);
+        }
+
+        svg {
+            opacity: 1;
+        }
+    }
+
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 50%;
+        right: 20%;
+        transform: translate(50%, -50%);
+        width: 70px;
+        height: 70px;
+        opacity: 0;
+        color: #fff;
+        border-radius: 50%;
+    }
+
+    svg {
+        position: absolute;
+        top: 90%;
+        right: 0;
+        transform: translate(50%, -50%);
+        color: #000;
+        opacity: 0;
+        z-index: 0;
+    }
+}

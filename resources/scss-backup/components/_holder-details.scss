@@ -1,0 +1,125 @@
+.holder-details {
+    &__header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        h5 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+
+            @include breakpoint-down(small-desktop) {
+                font-size: 16px;
+            }
+        }
+
+        h5 small {
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 3px;
+        }
+
+        button {
+            font-weight: 400;
+
+            @include breakpoint-down(small-desktop) {
+                padding: 5px 10px !important;
+            }
+        }
+    }
+
+    &__body {
+        padding: 20px 0;
+        margin: 15px 0 25px;
+        border-top: 1px solid $color-gray-e6;
+        border-bottom: 1px solid $color-gray-e6;
+
+        h1 {
+            font-size: 21px;
+            font-weight: 500;
+        }
+
+        h1 strong {
+            font-size: 45px;
+        }
+
+        h2 {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.461538;
+        }
+
+        ul {
+            display: block;
+            list-style: none;
+            padding: 0;
+
+            li {
+                position: relative;
+                padding: 0;
+                padding-left: 23px;
+                margin: 0 0 8px;
+                font-size: 15px;
+                font-weight: 600;
+                background: unset !important;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+                    width: 17px;
+                    height: 13px;
+                    background: url(../../images/green-tick.png) no-repeat
+                        center / contain;
+                }
+            }
+        }
+
+        ul ul {
+            padding: 5px 20px 1px 20px;
+            margin-bottom: 12px;
+
+            li {
+                margin: 0 0 14px;
+                font-weight: 400;
+
+                &:before {
+                    width: 14px;
+                    height: 10px;
+                    top: 5px;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        h5 {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 14px;
+        }
+    }
+
+    button {
+        padding: 5px 16px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+}

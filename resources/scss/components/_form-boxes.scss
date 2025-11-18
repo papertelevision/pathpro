@@ -1,0 +1,67 @@
+.form-boxes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .form-boxes__item {
+        &--auto {
+            flex: 0 0 auto;
+        }
+
+        &--scroll {
+            position: relative;
+            flex: 1 1 auto;
+            overflow-y: scroll;
+            width: calc(100% + 55px);
+            margin-left: -30px;
+
+            @include breakpoint-down(mobile) {
+                width: auto;
+            }
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+
+            &::-webkit-scrollbar-corner {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $color-gray-aa;
+                border-radius: 6px;
+            }
+
+            scrollbar-width: thin;
+            scrollbar-color: $color-gray-aa transparent;
+        }
+
+        &.has-min-height {
+            min-height: 120px;
+        }
+    }
+
+    .form-boxes__row {
+        display: flex;
+        gap: 37px;
+    }
+
+    .form-boxes__col {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        > span {
+            padding-bottom: 3px;
+        }
+
+        .form__checkbox {
+            gap: 3px;
+            margin-top: 0;
+        }
+    }
+}

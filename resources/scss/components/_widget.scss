@@ -1,0 +1,146 @@
+.widget {
+    border-radius: 12px;
+    box-shadow: 0px 0px 27px 0px rgba(118, 118, 118, 0.14);
+    background: $c-white;
+
+    &__group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        strong {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    }
+
+    &__group-text-wrapper {
+        width: 100%;
+        max-height: 190px;
+        padding: 6px 14px 1px 14px;
+        overflow-y: auto;
+
+        strong {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        &--rich-text {
+            max-height: 170px;
+
+            span {
+                font-size: 14px;
+                margin: 0;
+            }
+        }
+
+        p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: $color-black-33;
+        }
+    }
+
+    &__group-text-wrapper__title {
+        font-size: 14px;
+
+        strong {
+            margin-right: 0;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+
+        small {
+            font-size: 13px;
+            color: $color-gray-86;
+        }
+
+        &.is-absolute {
+            position: absolute !important;
+            bottom: 25px;
+        }
+
+        &.justify-start {
+            justify-content: flex-start !important;
+        }
+    }
+
+    &.is-relative {
+        position: relative;
+    }
+
+    &-text-blue {
+        margin-right: 3px;
+        color: $color-blue-0e9;
+    }
+
+    &.justify-around {
+        justify-content: space-around;
+    }
+}
+
+.widget--horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+
+    @media (max-width: 640px) {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.widget--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 230px;
+    padding: 20px;
+
+    h1 {
+        font-size: 80px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    .widget__footer {
+        position: relative;
+        justify-content: center;
+        width: 100%;
+        min-height: 16.8px;
+        padding: 0 14px;
+
+        &-button {
+            position: absolute;
+            right: -8px;
+            background: none;
+            border: none;
+        }
+
+        &-button.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        svg path {
+            fill: $color-black-33;
+            stroke: $color-black-33;
+            stroke-width: 2px;
+        }
+    }
+
+    &.is-scrollable {
+        padding-right: 5px;
+    }
+}

@@ -1,0 +1,161 @@
+.user-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    @include breakpoint-down(tablet) {
+        display: block;
+    }
+}
+
+.user-row-col-left {
+    flex: 0 0 44.5%;
+
+    .user-row-content {
+        background-color: $color-gray-e8e;
+    }
+
+    @include breakpoint-down(tablet) {
+        margin-bottom: 30px;
+    }
+}
+
+.user-row-col-right {
+    flex: 0 0 53.5%;
+
+    .user-row-content {
+        padding-bottom: 13px;
+    }
+}
+
+.user-row-content {
+    padding: 21px 13px;
+    border-radius: 8px;
+    background: $color-gray-f7;
+
+    &__list:first-of-type {
+        margin-bottom: 14px;
+    }
+
+    &__list:only-child {
+        margin-bottom: 0;
+    }
+}
+
+.user-row-content + .user-row-content {
+    margin-top: 10px;
+}
+
+.user-row-content-header {
+    margin-bottom: 13px;
+
+    h3 {
+        font-size: 15px;
+    }
+
+    h3 strong {
+        color: $color-blue-0e9;
+    }
+
+    h3 i {
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+.user-row-footer {
+    padding-top: 16px;
+    margin-bottom: 15px;
+    border-top: 1px solid $color-gray-ae;
+}
+
+.user-row-link {
+    margin-right: 2px;
+    text-decoration: none;
+}
+
+.user-row-content__list {
+    &-rank {
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+        padding: 5px 13px;
+        margin-left: -13px;
+        margin-right: -13px;
+        font-size: 14px;
+
+        span {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        strong {
+            font-size: 14px;
+            color: $color-black-13;
+        }
+
+        &.is-colored {
+            background-color: $color-gray-ed;
+        }
+    }
+
+    &-holder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 18px;
+        background-color: $color-gray-ed;
+        border-radius: 10px;
+
+        strong {
+            font-size: 17px !important;
+        }
+
+        svg {
+            position: relative;
+        }
+
+        image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(20%, 10%);
+        }
+    }
+
+    &-button {
+        margin: 40px -23px -40px;
+        padding: 10px 0 0;
+        background: #f2f2f2 !important;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+	User Row Account
+\* ------------------------------------------------------------ */
+
+.user-row--account {
+    .user-row-col-left {
+        .user-row-content {
+            padding: 24px 13px;
+        }
+    }
+
+    .user-row-col-right {
+        .user-row-content {
+            padding: 24px 13px;
+            background-color: $c-white;
+        }
+
+        .user-row-content--plan {
+            padding: 18px 30px 13px;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.progressbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 17px;
+    background: linear-gradient(
+        360deg,
+        rgb(243, 245, 246) 0%,
+        rgb(255, 255, 255) 100%
+    );
+    border-radius: 5px;
+
+    @include breakpoint-down(mobile) {
+        padding: 10px 10px;
+    }
+
+    .progressbar-line {
+        display: block;
+        height: 5px;
+        width: 290px;
+        background: $color-gray-e6;
+        flex: 1 1 50%;
+        margin-right: 10px;
+
+        span {
+            display: block;
+            background: $color-black-48;
+            height: 5px;
+        }
+    }
+
+    .progressbar-status {
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+
+        @include breakpoint-down(mobile) {
+            font-size: 13px;
+        }
+    }
+}

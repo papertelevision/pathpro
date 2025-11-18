@@ -1,0 +1,180 @@
+.react-tooltip {
+    font-size: 15px !important;
+    z-index: 21 !important;
+    line-height: 1.461538;
+    border: 1px solid $color-gray-e6 !important;
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.13) !important;
+
+    &-arrow {
+        border-bottom: 1px solid $color-gray-e6;
+        border-right: 1px solid $color-gray-e6;
+    }
+
+    &--user {
+        max-width: 350px;
+        overflow-wrap: break-word;
+
+        span:first-child {
+            font-size: 14px;
+            color: $color-blue-24;
+        }
+
+        p {
+            margin-top: 5px;
+            font-size: 14px;
+            line-height: 1.714286;
+        }
+    }
+
+    &--project {
+        max-width: 350px;
+    }
+
+    &--text {
+        font-size: 14px;
+        line-height: 1.714286;
+    }
+
+    &--group {
+        max-width: 338px;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: -10px;
+
+        .button.larger {
+            padding: 7px 21px;
+            border-radius: 5px;
+        }
+    }
+
+    &__user {
+        display: block;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        img {
+            margin-right: 10px;
+        }
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    React Tooltip Team Members
+\* ------------------------------------------------------------ */
+
+.react-tooltip--team-members {
+    max-width: 524px;
+    padding: 15px 22px 13px 22px !important;
+
+    .react-tooltip--text {
+        font-size: 15px;
+        line-height: 1.714286;
+    }
+
+    .react-tooltip-arrow {
+        top: 72.5px;
+        left: -10px !important;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    React Tooltip Adopt Submission
+\* ------------------------------------------------------------ */
+
+.react-tooltip--adopt-submission {
+    max-width: 412px;
+    padding: 17px 15px 17px 20px !important;
+    font-size: 14px !important;
+
+    p {
+        margin-bottom: 7px;
+    }
+
+    .react-tooltip-arrow {
+        top: -7px !important;
+        width: 11px;
+        height: 11px;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    React Tooltip Header Settings
+\* ------------------------------------------------------------ */
+
+.react-tooltip--header-settings {
+    left: 153px !important;
+    max-width: 412px;
+    padding: 10px 19px !important;
+    font-size: 13px !important;
+    line-height: 1.75;
+
+    .react-tooltip-arrow {
+        top: -10px !important;
+        left: 30px !important;
+        width: 18px;
+        height: 18px;
+    }
+
+    a {
+        color: $color-blue-0e;
+        text-decoration: none;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    React Tooltip Onboarding
+\* ------------------------------------------------------------ */
+
+.react-tooltip--onboarding {
+    max-width: 523px;
+    padding: 14px 26px !important;
+    transition-property: opacity, left !important;
+    transition-timing-function: ease !important;
+    transition-duration: $t-duration !important;
+
+    p {
+        margin-bottom: 7px;
+        font-size: 15.5px;
+        font-weight: 400;
+        line-height: 1.74;
+        text-align: left;
+
+        i {
+            display: block;
+            font-size: 14.5px;
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+    }
+
+    .react-tooltip-arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    &.react-tooltip__place-right {
+        left: 0;
+        transition-property: opacity, left !important;
+
+        .react-tooltip-arrow {
+            left: -10px !important;
+        }
+    }
+
+    &.react-tooltip__place-bottom-start {
+        top: 0;
+        transition-property: opacity, top !important;
+
+        .react-tooltip-arrow {
+            top: -9px !important;
+            left: 43px !important;
+        }
+    }
+}

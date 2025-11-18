@@ -1,0 +1,300 @@
+.accordion {
+    display: none;
+
+    &--suggestions-edit-task {
+        max-height: 532px;
+        position: relative;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: 0;
+
+        @include breakpoint-down(mobile) {
+            position: static;
+        }
+
+        .accordion__section {
+            padding: 20px 15px 20px 30px !important;
+            border-bottom: 1px solid $color-gray-e6;
+
+            @include breakpoint-down(mobile) {
+                padding: 0;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .accordion__footer {
+            padding: 0px 35px !important;
+            margin: 0px !important;
+        }
+
+        .accordion__body-wrapper {
+            padding: 10px 0px 10px 42px;
+        }
+
+        &.is-static {
+            position: static;
+            max-height: 476px;
+        }
+
+        @include breakpoint-down(mobile) {
+            padding: 0;
+        }
+    }
+
+    &--project-member-permissions {
+        .accordion__section {
+            border-radius: 10px;
+            background: $color-gray-ed !important;
+        }
+
+        .accordion__header-left {
+            font-size: 14px;
+            font-weight: 600;
+            color: $color-blue-0e9;
+        }
+
+        .accordion__header-right {
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.accordion.active {
+    display: block;
+
+    &.suggestions {
+        margin: -8px -20px 0px -20px;
+        overflow: auto;
+
+        @include breakpoint-down(mobile) {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .accordion__section {
+        margin-bottom: 5px;
+        padding: 12px 23px;
+        background: $color-gray-f1;
+
+        &.has-error {
+            border-color: $color-red-de;
+        }
+    }
+
+    .accordion__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+
+        .accordion__header-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+                display: block;
+                max-width: 300px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @include breakpoint-down(mobile-medium) {
+                    max-width: 150px;
+                }
+            }
+
+            &--reply {
+                flex-direction: column;
+                align-items: normal;
+                gap: 20px;
+                width: 100%;
+            }
+        }
+
+        .accordion__header-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        &.suggestions {
+            padding-bottom: 20px;
+
+            @include breakpoint-down(mobile) {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .accordion__body {
+        display: none;
+    }
+
+    .accordion__body.active {
+        display: block;
+    }
+
+    .accordion__body-wrapper {
+        font-size: 13px;
+
+        strong {
+            display: inline-flex;
+            margin-bottom: 23px;
+            margin-right: 5px;
+            font-weight: 600;
+        }
+
+        p {
+            line-height: 1.461538;
+        }
+
+        &__text {
+            font-size: 12px;
+            line-height: 1.461538;
+        }
+    }
+
+    .accordion__footer {
+        margin: 0 -20px;
+        padding: 0 50px;
+
+        @include breakpoint-down(mobile) {
+            padding: 5px 30px;
+            margin: 0;
+        }
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Accordion Release Notes
+\* ------------------------------------------------------------ */
+
+.accordion--release-notes {
+    width: 100%;
+
+    .accordion__section {
+        padding: 17px 20px !important;
+        background: #fff !important;
+    }
+
+    .accordion__header {
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .accordion__body {
+        padding: 17px 0;
+    }
+
+    .accordion__group {
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .accordion__group-text {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.714286;
+
+        strong {
+            margin-bottom: 0 !important;
+        }
+
+        p {
+            margin-bottom: 10px !important;
+        }
+    }
+
+    .accordion__group:nth-child(2) {
+        padding: 10px 0 20px;
+        margin-top: 10px;
+        border-top: 1px solid $color-gray-e6;
+    }
+
+    .accordion__group:nth-child(3) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 5px;
+        grid-column-gap: 10px;
+
+        @include breakpoint-down(mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .box__header {
+        padding: 15px 0;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Accordion Subtask
+\* ------------------------------------------------------------ */
+
+.accordion--subtask {
+    .accordion__section {
+        padding: 11px 17px !important;
+        border-radius: 5px;
+        background: $color-gray-fa !important;
+
+        .box__task-status {
+            margin-top: 0;
+        }
+    }
+
+    .accordion__header {
+        margin-bottom: 4px;
+        font-size: 15px !important;
+    }
+
+    .accordion__body {
+        i {
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        &-wrapper {
+            span {
+                font-size: 14px;
+                font-weight: 600;
+                color: $color-green-5e;
+                text-transform: uppercase;
+            }
+
+            i {
+                font-size: 14px;
+                font-weight: 600;
+                font-style: normal;
+            }
+        }
+
+        &-wrapper__text {
+            font-size: 14px !important;
+        }
+    }
+
+    .accordion__footer {
+        display: none;
+    }
+
+    .accordion__body.active ~ .accordion__footer {
+        display: block;
+        margin: 5px 0 0;
+        padding: 11px 0 0;
+        border-top: 1px solid $color-gray-e6;
+    }
+}

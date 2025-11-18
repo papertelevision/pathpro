@@ -1,0 +1,85 @@
+.subheader-select-field {
+    &__control {
+        position: relative;
+        height: 30px !important;
+        width: 100px !important;
+        min-height: 0 !important;
+        padding: 0;
+        font-size: 14px;
+        color: $color-black-33 !important;
+        background: linear-gradient(
+            360deg,
+            rgb(243, 245, 246) 0%,
+            rgb(255, 255, 255) 100%
+        ) !important;
+        box-shadow: unset !important;
+        border: 0.5px solid $color-gray-df !important;
+        border-radius: 3px !important;
+        cursor: pointer !important;
+
+        &--is-disabled {
+            background: #ffffff !important;
+        }
+    }
+
+    &__placeholder {
+        position: unset !important;
+        top: 0 !important;
+        padding-left: 10px !important;
+        transform: unset !important;
+        margin: 0 !important;
+        color: $color-black-33 !important;
+    }
+
+    &__indicator {
+        padding: 0 5px 0 0 !important;
+
+        svg {
+            height: 13px;
+            fill: $color-gray-70;
+        }
+    }
+
+    &__indicator-separator {
+        display: none !important;
+        height: 30px !important;
+    }
+
+    &__menu {
+        right: 0px !important;
+        width: fit-content !important;
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.14) !important;
+        border-radius: 5px !important;
+
+        &-list {
+            padding: 10px 0 !important;
+        }
+    }
+
+    &__indicators {
+        height: 30px !important;
+        padding-right: 0 !important;
+    }
+
+    &__value-container {
+        height: 30px !important;
+        padding: 0 !important;
+    }
+
+    &__option {
+        padding: 3px 19px !important;
+        margin-bottom: 2px !important;
+        font-size: 15px !important;
+        cursor: pointer !important;
+
+        &--is-focused {
+            color: $color-black-33 !important;
+            background-color: $color-gray-f7 !important;
+        }
+
+        &--is-selected {
+            color: $color-black-33 !important;
+            background-color: $color-gray-e8e !important;
+        }
+    }
+}
