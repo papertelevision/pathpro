@@ -106,10 +106,14 @@
     .subheader__right {
         display: flex;
         align-items: center;
-        gap: 11px;
+        gap: 5.5px;
 
         @include breakpoint-down(mobile) {
-            gap: 5px;
+            gap: 2.5px;
+        }
+
+        .box__button.share {
+            margin-right: 6px;
         }
     }
 

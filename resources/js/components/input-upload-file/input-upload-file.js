@@ -25,6 +25,7 @@ const InputUploadFile = ({
     uploadedFile,
     setUploadedFile,
     disabled,
+    user,
     ...props
 }) => {
     const { register } = useFormContext();
@@ -46,6 +47,10 @@ const InputUploadFile = ({
         }
     };
 
+    // Check if we have a custom avatar (not the default user-default-img.png)
+    const hasCustomAvatar = (imageSrc || uploadedFile) &&
+                           !(uploadedFile && uploadedFile.includes('user-default-img.png'));
+
     return (
         <div
             className={classNames('input-upload-file', {
@@ -54,7 +59,13 @@ const InputUploadFile = ({
             })}
         >
             <strong>{title}</strong>
-            <img src={imageSrc || uploadedFile} alt={name} />
+            {hasCustomAvatar ? (
+                <img src={imageSrc || uploadedFile} alt={name} />
+            ) : (
+                <div className="input-upload-file__initials">
+                    {user?.username?.charAt(0).toUpperCase() || '?'}
+                </div>
+            )}
             <input
                 name={name}
                 type="file"

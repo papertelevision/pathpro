@@ -334,7 +334,7 @@ const FormEditProject = ({
                     {
                         title: 'Ban member',
                         description:
-                            'This option will ban this member from the project, and will prevent<br/> the user from rejoining the project unless you remove the ban.',
+                            'This option will ban this member from the project, and will prevent the user from rejoining the project unless you remove the ban.',
                         handler: (e) => setBanMember(e.target.checked),
                     },
                 ]}

@@ -77,13 +77,16 @@ const FormEditSubtaskPublicView = ({
                             </div>
                         )}
                         <div className="form__col-public">
-                            <div className="form__col-public__description">
-                                {parse(
-                                    DOMPurify.sanitize(subtask.description, {
-                                        ADD_ATTR: ['target'],
-                                    })
-                                )}
-                            </div>
+                            {subtask.description && subtask.description.replace(/<[^>]*>/g, '').trim() && (
+                                <div className="form__col-public__description form__col-public__description--scrollable">
+                                    <h4 className="form__col-public__description-header">Description</h4>
+                                    {parse(
+                                        DOMPurify.sanitize(subtask.description, {
+                                            ADD_ATTR: ['target'],
+                                        })
+                                    )}
+                                </div>
+                            )}
                             {subtask.community_members.length > 0 && (
                                 <MultipleSelectField
                                     name="community_members"

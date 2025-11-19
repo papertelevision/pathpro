@@ -254,6 +254,7 @@ const TableProjectReleaseNotes = ({
                     dynamicData={releaseNotesAuthors}
                     currentTableFilterValue={currentTableFilterValue}
                     setCurrentTableFilterValue={setCurrentTableFilterValue}
+                    totalEntries={releaseNotes.meta.total}
                 />
             )}
 
@@ -343,7 +344,7 @@ const TableProjectReleaseNotes = ({
                     </Table>
                 </div>
             </div>
-            {page.length > 0 && (
+            {releaseNotes.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}
@@ -359,7 +360,6 @@ const TableProjectReleaseNotes = ({
             )}
 
             <Modal
-                larger
                 className="full-height"
                 modalIsOpen={isEditReleaseNoteModalOpen}
                 setIsModalOpen={setIsEditReleaseNoteModalOpen}
@@ -367,16 +367,18 @@ const TableProjectReleaseNotes = ({
                 setOpenAlertBox={setOpenAlertBox}
                 closeModal={closeEditReleaseNoteModal}
             >
-                <ModalEditReleaseNote
-                    closeModal={closeEditReleaseNoteModal}
-                    setIsFormChanged={setIsFormChanged}
-                    setIsEditReleaseNoteModalOpen={
-                        setIsEditReleaseNoteModalOpen
-                    }
-                    releaseNote={releaseNoteForEdit}
-                    projectData={project}
-                    currentTablePage={currentTablePage}
-                />
+                <Modal.Content>
+                    <ModalEditReleaseNote
+                        closeModal={closeEditReleaseNoteModal}
+                        setIsFormChanged={setIsFormChanged}
+                        setIsEditReleaseNoteModalOpen={
+                            setIsEditReleaseNoteModalOpen
+                        }
+                        releaseNote={releaseNoteForEdit}
+                        projectData={project}
+                        currentTablePage={currentTablePage}
+                    />
+                </Modal.Content>
             </Modal>
 
             <AlertBox

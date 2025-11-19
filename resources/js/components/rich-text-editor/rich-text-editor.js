@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import React from 'react';
 import classNames from 'classnames';
 import { useFormContext } from 'react-hook-form';
 
@@ -18,19 +19,28 @@ const RichTextEditor = ({
     readOnly = false,
     larger,
     value,
+    hideErrorMessage = false,
 }) => {
     const {
+        register,
         setValue,
         getValues,
+        watch,
         formState: { errors },
     } = useFormContext();
 
+    // Register the field with react-hook-form
+    React.useEffect(() => {
+        register(name);
+    }, [register, name]);
+
     const validationError = errors[name] ? errors[name]?.message : null;
+    const fieldValue = watch(name);
 
     useRichTextEditor({
         id,
         name,
-        value,
+        value: fieldValue,
         readOnly,
         setValue,
         getValues,
@@ -47,7 +57,7 @@ const RichTextEditor = ({
         >
             <label htmlFor="editor">{label}</label>
             <div id={`editor-${id}`} className="rich-text-editor__field"></div>
-            {validationError && (
+            {validationError && !hideErrorMessage && (
                 <div className="rich-text-editor__validation-error">
                     {validationError}
                 </div>

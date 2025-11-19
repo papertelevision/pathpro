@@ -30,6 +30,7 @@ const TableProjectReleaseNotesActions = ({
     dynamicData,
     currentTableFilterValue,
     setCurrentTableFilterValue,
+    totalEntries,
 }) => {
     const { isUserLoggedIn, canUpdateProject } = usePermissionsContextApi();
 
@@ -87,18 +88,20 @@ const TableProjectReleaseNotesActions = ({
                     </li>
                 </ul>
             </div>
-            <div className="table__actions-right">
-                <TablePagination
-                    canPreviousPage={canPreviousPage}
-                    pageIndex={pageIndex}
-                    pageOptions={pageOptions}
-                    canNextPage={canNextPage}
-                    pageCount={pageCount}
-                    nextPage={nextPage}
-                    previousPage={previousPage}
-                    gotoPage={gotoPage}
-                />
-            </div>
+            {totalEntries >= 10 && (
+                <div className="table__actions-right">
+                    <TablePagination
+                        canPreviousPage={canPreviousPage}
+                        pageIndex={pageIndex}
+                        pageOptions={pageOptions}
+                        canNextPage={canNextPage}
+                        pageCount={pageCount}
+                        nextPage={nextPage}
+                        previousPage={previousPage}
+                        gotoPage={gotoPage}
+                    />
+                </div>
+            )}
         </div>
     );
 };

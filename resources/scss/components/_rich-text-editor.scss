@@ -23,6 +23,10 @@
         border-top-right-radius: 5px;
     }
 
+    .ql-toolbar.ql-snow {
+        margin-top: 19px;
+    }
+
     .ql-tooltip {
         left: 50% !important;
         transform: translateX(-50%) !important;
@@ -108,4 +112,58 @@
 
 .rich-text-editor--medium {
     max-width: 600px;
+}
+
+/* ------------------------------------------------------------ *\
+    Rich Text Editor in Form Suggestion
+\* ------------------------------------------------------------ */
+
+.form__suggestion .rich-text-editor {
+    margin-bottom: 0;
+
+    label {
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    .ql-toolbar {
+        border-bottom: none !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        background: $c-white !important;
+    }
+
+    .rich-text-editor__field {
+        height: 85px !important;
+        border-bottom: none !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        background: $c-white !important;
+    }
+
+    .ql-editor {
+        background: $c-white !important;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+    Rich Text Editor in Reply Section
+\* ------------------------------------------------------------ */
+
+.reply-section .rich-text-editor {
+    margin-bottom: 10px;
+
+    .ql-toolbar {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        background: $c-white !important;
+    }
+
+    .rich-text-editor__field {
+        background: $c-white !important;
+    }
+
+    .ql-editor {
+        background: $c-white !important;
+    }
 }

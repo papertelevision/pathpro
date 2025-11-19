@@ -266,6 +266,7 @@ const TableProjectNews = ({
                     dynamicData={newsAuthors}
                     currentTableFilterValue={currentTableFilterValue}
                     setCurrentTableFilterValue={setCurrentTableFilterValue}
+                    totalEntries={news.meta.total}
                 />
             )}
             <div className="table-overflow">
@@ -343,7 +344,7 @@ const TableProjectNews = ({
                     </Table>
                 </div>
             </div>
-            {page.length > 0 && (
+            {news.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}
@@ -359,7 +360,6 @@ const TableProjectNews = ({
             )}
 
             <Modal
-                larger
                 className="full-height"
                 modalIsOpen={isEditNewsUpdateModalOpen}
                 setIsModalOpen={setIsEditNewsUpdateModalOpen}
@@ -367,14 +367,16 @@ const TableProjectNews = ({
                 setOpenAlertBox={setOpenAlertBox}
                 closeModal={closeEditNewsUpdateModal}
             >
-                <ModalEditNewsUpdate
-                    closeModal={closeEditNewsUpdateModal}
-                    setIsFormChanged={setIsFormChanged}
-                    setIsEditNewsUpdateModalOpen={setIsEditNewsUpdateModalOpen}
-                    newsUpdate={newsUpdateForEdit}
-                    project={project}
-                    currentTablePage={currentTablePage}
-                />
+                <Modal.Content>
+                    <ModalEditNewsUpdate
+                        closeModal={closeEditNewsUpdateModal}
+                        setIsFormChanged={setIsFormChanged}
+                        setIsEditNewsUpdateModalOpen={setIsEditNewsUpdateModalOpen}
+                        newsUpdate={newsUpdateForEdit}
+                        project={project}
+                        currentTablePage={currentTablePage}
+                    />
+                </Modal.Content>
             </Modal>
 
             <AlertBox

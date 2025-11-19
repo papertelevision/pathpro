@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Project\Enums\ProjectUserRoleEnum;
 use App\Domain\Project\Models\Project;
+use App\Domain\User\Enums\UserRankEnum;
 use App\Domain\User\Models\User;
 use App\Http\Domain\Project\Requests\BulkUpdateMemberRequest;
 use App\Http\Resources\BannedMemberResource;
@@ -77,13 +79,19 @@ class ProjectBannedMemberController extends Controller
             if ($authUser->cannot('manageCommunityAndTeamMembers', [User::class, $project])) {
                 abort(403);
             }
-            $user->permissions()->detach($project->id);
+            $user->permissions()->updateExistingPivot($project->id, [
+                'rank' => UserRankEnum::COMMUNITY_MEMBER,
+                'role' => ProjectUserRoleEnum::communityMember,
+            ]);
         } else {
             foreach ($user->bannedFromProjects as $project) {
                 if ($authUser->cannot('manageCommunityAndTeamMembers', [User::class, $project])) {
                     abort(403);
                 }
-                $user->permissions()->detach($project->id);
+                $user->permissions()->updateExistingPivot($project->id, [
+                    'rank' => UserRankEnum::COMMUNITY_MEMBER,
+                    'role' => ProjectUserRoleEnum::communityMember,
+                ]);
             }
         }
 
@@ -107,7 +115,10 @@ class ProjectBannedMemberController extends Controller
             foreach ($validated['members'] as $memberId) {
                 $member = User::find($memberId);
                 if ($member) {
-                    $member->permissions()->detach($project->id);
+                    $member->permissions()->updateExistingPivot($project->id, [
+                        'rank' => UserRankEnum::COMMUNITY_MEMBER,
+                        'role' => ProjectUserRoleEnum::communityMember,
+                    ]);
                 }
             }
         } else {
@@ -118,7 +129,10 @@ class ProjectBannedMemberController extends Controller
                         if ($authUser->cannot('manageCommunityAndTeamMembers', [User::class, $project])) {
                             abort(403);
                         }
-                        $member->permissions()->detach($project->id);
+                        $member->permissions()->updateExistingPivot($project->id, [
+                            'rank' => UserRankEnum::COMMUNITY_MEMBER,
+                            'role' => ProjectUserRoleEnum::communityMember,
+                        ]);
                     }
                 }
             }

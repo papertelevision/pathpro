@@ -67,9 +67,20 @@ const FormEditNewsUpdate = ({
 
     return (
         <FormProvider {...methods}>
-            <Form onSubmit={methods.handleSubmit(handleFormSubmit)} noValidate>
+            <Form onSubmit={methods.handleSubmit(handleFormSubmit)} modifier="news" noValidate>
                 <Form.Content>
                     <Form.ColLeft maxWidth>
+                        <div className="form__col-head">
+                            <h3>Edit News Update</h3>
+                            <button
+                                type="button"
+                                onClick={closeModal}
+                                className="news-close-btn"
+                                aria-label="Close"
+                            >
+                                ✕
+                            </button>
+                        </div>
                         <FormField title="Title" id="title" name="title" />
                         <RichTextEditor
                             label="Description"
@@ -78,42 +89,34 @@ const FormEditNewsUpdate = ({
                         />
                     </Form.ColLeft>
                 </Form.Content>
-                <Form.Footer unbordered className="mobile-block">
-                    <div className="form-footer__col">
+                <Form.Footer justify>
+                    <div className="form__footer-group">
                         <Button
                             type="button"
-                            color="close"
+                            color="is-transparent"
+                            modifier="rectangular"
                             onClick={handleClickCancelButton}
                         >
                             Cancel
                         </Button>
-                        {newsUpdate.status !== 'draft' ? (
-                            <>
-                                <i className="form-footer__divider"></i>
-                                <Button
-                                    type="submit"
-                                    color="blue-text"
-                                    onClick={() =>
-                                        methods.setValue('is_draft', true)
-                                    }
-                                >
-                                    Save As Draft
-                                </Button>
-                            </>
-                        ) : (
-                            <i className="form-footer__divider form-footer__divider--margin" />
+                        {newsUpdate.status !== 'draft' && (
+                            <Button
+                                type="submit"
+                                color="is-transparent"
+                                modifier="rectangular"
+                                onClick={() => methods.setValue('is_draft', true)}
+                            >
+                                Save As Draft
+                            </Button>
                         )}
-                    </div>
-                    <div className="form-footer__col">
                         <Button
                             type="submit"
-                            rounded
-                            medium
-                            color="blue"
+                            modifier="rectangular"
+                            color="is-red"
                             onClick={() => methods.setValue('is_draft', false)}
                         >
                             {newsUpdate.status === 'live'
-                                ? 'Edit News Update'
+                                ? 'Update News'
                                 : 'Publish News Update'}
                         </Button>
                     </div>

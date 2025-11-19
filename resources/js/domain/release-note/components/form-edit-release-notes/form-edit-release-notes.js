@@ -102,9 +102,20 @@ const FormEditReleaseNotes = ({
 
     return (
         <FormProvider {...methods}>
-            <Form onSubmit={methods.handleSubmit(handleFormSubmit)} noValidate>
+            <Form onSubmit={methods.handleSubmit(handleFormSubmit)} modifier="release-note" noValidate>
                 <Form.Content>
                     <Form.ColLeft maxWidth>
+                        <div className="form__col-head">
+                            <h3>Edit Release</h3>
+                            <button
+                                type="button"
+                                onClick={closeModal}
+                                className="release-note-close-btn"
+                                aria-label="Close"
+                            >
+                                ✕
+                            </button>
+                        </div>
                         <FormField title="Title" id="title" name="title" />
                         <RichTextEditor
                             label="Description"
@@ -124,28 +135,27 @@ const FormEditReleaseNotes = ({
                         </div>
                     </Form.ColLeft>
                 </Form.Content>
-                <Form.Footer className="mobile-block">
-                    <div className="form-footer__col">
+                <Form.Footer justify>
+                    <div className="form__footer-group">
                         <Button
                             type="button"
-                            color="close"
+                            color="is-transparent"
+                            modifier="rectangular"
                             onClick={handleClickCancelButton}
                         >
                             Cancel
                         </Button>
-                        <i className="form-footer__divider"></i>
                         <Button
                             type="button"
-                            color="blue-text"
+                            color="is-transparent"
+                            modifier="rectangular"
                             onClick={methods.handleSubmit(
                                 handleClickSaveAsDraft
                             )}
                         >
                             Save As Draft
                         </Button>
-                    </div>
-                    <div className="form-footer__col">
-                        <Button type="submit" rounded medium color="blue">
+                        <Button type="submit" modifier="rectangular" color="is-red">
                             Publish Release Notes
                         </Button>
                     </div>

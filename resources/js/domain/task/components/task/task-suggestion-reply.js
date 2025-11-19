@@ -4,6 +4,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
 
 /**
  * Internal dependencies
@@ -96,7 +98,9 @@ const TaskSuggestionReply = ({ reply, project, sortCommentsBy, isEditMode = fals
                         )}
                     </span>
                     <span>{formatedDate}</span>
-                    <p className="suggestion__content reply">{reply.content}</p>
+                    <p className="suggestion__content reply">
+                        {parse(DOMPurify.sanitize(reply.content, { ADD_ATTR: ['target'] }))}
+                    </p>
                     {reply.attachments && reply.attachments.length > 0 && (
                         <AttachmentList
                             attachments={reply.attachments}

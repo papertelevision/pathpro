@@ -218,6 +218,20 @@
         }
     }
 
+    .box__footer-right .box__footer-comments-wrapper {
+        padding-right: 3px;
+
+        svg {
+            fill: #e5e5e5;
+        }
+
+        .box__footer-comments-count {
+            color: #e5e5e5;
+            opacity: 1;
+            font-weight: normal;
+        }
+    }
+
     .task-avatars {
         display: flex;
         align-items: center;
@@ -450,7 +464,8 @@
         width: 30px;
         min-width: 30px;
         padding: 0;
-        border: 0.5px solid $color-gray-df !important;
+        background-color: #d2dce2;
+        border: 0.5px solid #eff3f5 !important;
         border-radius: 3px !important;
 
         svg {
@@ -705,9 +720,20 @@
         line-height: 1.4;
     }
 
+    .box__divider {
+        margin: 10px 0;
+        border-top: 1px solid $color-gray-ee;
+    }
+
     .box__footer {
         padding: 0;
         border: unset;
+
+        &--no-description {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid $color-gray-ee !important;
+        }
     }
 
     .box__actions {

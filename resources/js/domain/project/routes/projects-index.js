@@ -67,7 +67,7 @@ const ProjectsIndex = () => {
                     <Subheader.Right>
                         <Button
                             type="button"
-                            modifier="add-record no-border"
+                            modifier="add-record"
                             icon
                             onClick={() => {
                                 canCreateProjects

@@ -55,6 +55,7 @@ const Filter = ({
             ref={ref}
             className={classNames('filter', {
                 [`filter--${kebabCase(type)}`]: type,
+                'filter--white-img': showWhiteImg,
             })}
             onClick={() => setIsVisible(!isVisible)}
         >

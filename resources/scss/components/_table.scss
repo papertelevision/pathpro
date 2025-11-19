@@ -5,7 +5,7 @@
     &__thead {
         tr {
             height: 39px;
-            background-color: $color-gray-be;
+            background-color: #cad5db;
 
             &:last-child {
                 height: 1px;
@@ -16,7 +16,7 @@
         th {
             padding-right: 10px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             text-align: left;
             white-space: nowrap;
 
@@ -435,7 +435,7 @@
         }
 
         th {
-            font-weight: 600;
+            font-weight: 400;
 
             &:first-child {
                 padding-left: 15px;

@@ -387,6 +387,7 @@ const TableSubmissionsIndex = ({
                     currentTableFilterValue={currentTableFilterValue}
                     setCurrentTableFilterValue={setCurrentTableFilterValue}
                     setSelectedProjectSlug={setSelectedProjectSlug}
+                    totalEntries={submissions.meta.total}
                 />
             )}
 
@@ -440,7 +441,7 @@ const TableSubmissionsIndex = ({
                 </div>
             </div>
 
-            {page.length > 0 && (
+            {submissions.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}

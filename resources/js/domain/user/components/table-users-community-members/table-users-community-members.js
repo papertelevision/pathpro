@@ -229,6 +229,7 @@ const TableUsersCommunityMembers = ({
                     ranks={ranks}
                     currentTableFilterValue={currentTableFilterValue}
                     setCurrentTableFilterValue={setCurrentTableFilterValue}
+                    totalEntries={communityMembers.meta.total}
                 />
             )}
 
@@ -284,15 +285,12 @@ const TableUsersCommunityMembers = ({
                                                     >
                                                         {cell.column.id ===
                                                         'member' ? (
-                                                            <TooltipUserAvatar
-                                                                user={
-                                                                    row.original
-                                                                        .member
-                                                                }
-                                                                projectSlug={
-                                                                    projectSlug
-                                                                }
-                                                            />
+                                                            <NavLink
+                                                                to={`/community-members/${row.original.id}`}
+                                                                end
+                                                            >
+                                                                {row.original.member.username}
+                                                            </NavLink>
                                                         ) : cell.column.id ===
                                                           'email' ? (
                                                             <NavLink
@@ -323,7 +321,7 @@ const TableUsersCommunityMembers = ({
                     </Table>
                 </div>
             </div>
-            {page.length > 0 && (
+            {communityMembers.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}
@@ -355,7 +353,7 @@ const TableUsersCommunityMembers = ({
                     {
                         title: 'Ban member',
                         description:
-                            'This option will ban this member from the project, and will prevent<br/> the user from rejoining the project unless you remove the ban.',
+                            'This option will ban this member from the project, and will prevent the user from rejoining the project unless you remove the ban.',
                         handler: (e) => setBanMembers(e.target.checked),
                     },
                 ]}

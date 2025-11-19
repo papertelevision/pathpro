@@ -20,6 +20,7 @@ class TaskResource extends JsonResource
             'description' => $this->description,
             'task_type' => new TaskTypeResource($this->whenLoaded('taskType')),
             'are_subtasks_allowed' => $this->are_subtasks_allowed,
+            'created_at' => $this->created_at,
             'project' => new ProjectResource($this->whenLoaded('project')),
             'project_id' => $this->project_id,
             'task_group_id' => $this->task_group_id,

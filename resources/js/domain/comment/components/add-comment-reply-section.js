@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useQueryClient } from 'react-query';
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ import * as yup from 'yup';
 /**
  * Internal dependencies
  */
-import FormTextArea from '@app/components/form/form-textarea';
+import RichTextEditor from '@app/components/rich-text-editor/rich-text-editor';
 import FormInlineFileUpload from '@app/components/form/form-inline-file-upload';
 import Button from '@app/components/button/button';
 import useCommentStoreMutation from '@app/data/comment/use-comment-store-mutation';
@@ -32,8 +32,6 @@ const AddCommentReplySection = ({
     handleShowReplySection,
     sortCommentsBy,
 }) => {
-    const [textAreaValue, setTextAreaValue] = useState('');
-
     const { isUserLoggedIn, canPinComments } = usePermissionsContextApi();
 
     const queryClient = useQueryClient();
@@ -82,7 +80,6 @@ const AddCommentReplySection = ({
 
         mutateCommentStore(payload, {
             onSuccess: () => {
-                setTextAreaValue('');
                 methodsCommentsReply.reset();
                 handleShowReplySection(-1);
 
@@ -107,12 +104,12 @@ const AddCommentReplySection = ({
                     'is-active': isReplySubmitSectionActive(idx),
                 })}
             >
-                <FormTextArea
-                    title="Add Reply to Suggestion:"
-                    id="content"
+                <RichTextEditor
+                    id={`reply-${task.id}-${suggestion.id}`}
                     name="content"
-                    setTextAreaValue={setTextAreaValue}
-                    textAreaValue={textAreaValue}
+                    label="Add Reply to Suggestion:"
+                    placeholder="Add your reply..."
+                    hideErrorMessage={true}
                 />
                 <div className="reply-section__actions">
                     <Button

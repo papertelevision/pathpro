@@ -117,6 +117,7 @@ const FormEditCommunityMemberProfile = ({
                                     title="Profile Photo"
                                     name="avatar"
                                     uploadedFile={member.avatar}
+                                    user={member}
                                     disabled
                                 />
                                 <FormTextArea

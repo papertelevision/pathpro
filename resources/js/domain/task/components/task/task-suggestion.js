@@ -6,6 +6,8 @@ import { useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
 import { debounce } from 'lodash';
+import parse from 'html-react-parser';
+import DOMPurify from 'dompurify';
 
 /**
  * Internal dependencies
@@ -177,10 +179,10 @@ const TaskSuggestion = ({
                         {suggestion.highest_upvoted ? (
                             <Fragment>
                                 <i>Highest upvoted comment! </i>{' '}
-                                {suggestion.content}
+                                {parse(DOMPurify.sanitize(suggestion.content, { ADD_ATTR: ['target'] }))}
                             </Fragment>
                         ) : (
-                            suggestion.content
+                            parse(DOMPurify.sanitize(suggestion.content, { ADD_ATTR: ['target'] }))
                         )}
                     </p>
                     {suggestion.attachments && suggestion.attachments.length > 0 && (

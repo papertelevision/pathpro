@@ -115,13 +115,14 @@ const MultipleSelectField = ({
                                         )}
                                         key={`${val.value}-${index}`}
                                     >
-                                        {val.avatar && (
+                                        {val.entireItem ? (
                                             <TooltipUserAvatar
                                                 user={val.entireItem}
                                                 projectSlug={projectSlug}
                                             />
+                                        ) : (
+                                            <span>{val.label}</span>
                                         )}
-                                        {!val.avatar && val.label}
                                         {!readOnly && (
                                             <button
                                                 type="button"

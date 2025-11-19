@@ -24,6 +24,7 @@ const TableTeamMembersActions = ({
     previousPage,
     gotoPage,
     isAnyCheckBoxChecked,
+    totalEntries,
 }) => {
     const { canUpdateProject } = usePermissionsContextApi();
 
@@ -41,18 +42,20 @@ const TableTeamMembersActions = ({
                     />
                 )}
             </div>
-            <div className="table__actions-right">
-                <TablePagination
-                    canPreviousPage={canPreviousPage}
-                    pageIndex={pageIndex}
-                    pageOptions={pageOptions}
-                    canNextPage={canNextPage}
-                    pageCount={pageCount}
-                    nextPage={nextPage}
-                    previousPage={previousPage}
-                    gotoPage={gotoPage}
-                />
-            </div>
+            {totalEntries >= 10 && (
+                <div className="table__actions-right">
+                    <TablePagination
+                        canPreviousPage={canPreviousPage}
+                        pageIndex={pageIndex}
+                        pageOptions={pageOptions}
+                        canNextPage={canNextPage}
+                        pageCount={pageCount}
+                        nextPage={nextPage}
+                        previousPage={previousPage}
+                        gotoPage={gotoPage}
+                    />
+                </div>
+            )}
         </div>
     );
 };

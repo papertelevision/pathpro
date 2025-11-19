@@ -38,6 +38,7 @@ import { usePermissionsContextApi } from '@app/lib/permissions-context-api';
 import { useQueryContextApi } from '@app/lib/query-context-api';
 import FormEditTaskSuggestions from '@app/domain/task/components/form-edit-task/form-edit-task-suggestions';
 import FormCloseBtn from '@app/components/form/form-close-btn';
+import TooltipUserAvatar from '@app/components/tooltip/tooltip-user-avatar';
 
 const schema = yup.object().shape({
     title: yup.string().required('This field is required.'),
@@ -60,6 +61,7 @@ const FormEditFeature = ({
 }) => {
     const [openAlertBoxForDeleteAction, setOpenAlertBoxForDeleteAction] =
         useState(false);
+    const [isEditMode, setIsEditMode] = useState(false);
     const { canCreateEditTasksFeatures, isUserLoggedIn } =
         usePermissionsContextApi();
 
@@ -112,9 +114,10 @@ const FormEditFeature = ({
             },
             {
                 onSuccess: () => {
-                    setSelectedFeatureId(null);
-                    setIsEditFeatureModalOpen(false);
-                    navigate(modalRedirectUrl);
+                    setIsEditMode(false);
+                    // Reset form with current values as new defaults to clear dirty state
+                    const currentValues = methods.getValues();
+                    methods.reset(currentValues);
                 },
             }
         );
@@ -178,7 +181,7 @@ const FormEditFeature = ({
                                     </FormRowBox>
                                 )}
                             {isUserLoggedIn &&
-                            canCreateEditTasksFeatures(project.id) ? (
+                            canCreateEditTasksFeatures(project.id) && isEditMode ? (
                                 <>
                                     <FormRow
                                         marginBottom={
@@ -284,24 +287,33 @@ const FormEditFeature = ({
                                         </div>
                                     )}
                                     <div className="form__col-public">
-                                        <div className="form__col-public__description">
-                                            {parse(
-                                                DOMPurify.sanitize(
-                                                    feature.description,
-                                                    {
-                                                        ADD_ATTR: ['target'],
-                                                    }
-                                                )
-                                            )}
-                                        </div>
-                                        {feature.community_members.length >
-                                            0 && (
-                                            <MultipleSelectField
-                                                name="community_members"
-                                                title="Suggested by:"
-                                                readOnly
-                                                data={project.community_members}
-                                            />
+                                        {feature.description && feature.description.replace(/<[^>]*>/g, '').trim() && (
+                                            <div className="form__col-public__description form__col-public__description--scrollable">
+                                                <h4 className="form__col-public__description-header">Description</h4>
+                                                {parse(
+                                                    DOMPurify.sanitize(
+                                                        feature.description,
+                                                        {
+                                                            ADD_ATTR: ['target'],
+                                                        }
+                                                    )
+                                                )}
+                                            </div>
+                                        )}
+                                        {feature.community_members.length > 0 && (
+                                            <div className="form__col-public__suggested-by">
+                                                <label>Suggested by:</label>
+                                                <div className="form__col-public__suggested-by-users">
+                                                    {feature.community_members.map((member) => (
+                                                        <TooltipUserAvatar
+                                                            key={member.id}
+                                                            user={member}
+                                                            isUsernameVisible={true}
+                                                            projectSlug={project.slug}
+                                                        />
+                                                    ))}
+                                                </div>
+                                            </div>
                                         )}
                                     </div>
                                 </>
@@ -317,24 +329,29 @@ const FormEditFeature = ({
                                     {isUserLoggedIn &&
                                         canCreateEditTasksFeatures(
                                             project.id
-                                        ) && (
-                                            <>
-                                                <span>
-                                                    Feature / Task Upvoting
-                                                </span>
-                                                <FormToggle
-                                                    id="are_stats_public"
-                                                    name="are_stats_public"
-                                                    description="Display Stats"
-                                                    marginBottom
-                                                />
-                                            </>
+                                        ) &&
+                                        isEditMode && (
+                                            <div className="form-boxes__row">
+                                                <div className="form-boxes__col">
+                                                    <span>
+                                                        Feature / Task Upvoting
+                                                    </span>
+                                                    <FormToggle
+                                                        id="are_stats_public"
+                                                        name="are_stats_public"
+                                                        description="Display Stats"
+                                                        marginBottom
+                                                    />
+                                                </div>
+                                            </div>
                                         )}
                                     <AddCommentSection
+                                        key={feature.id}
                                         task={feature}
                                         project={project}
                                         modelType="feature"
                                         sortCommentsBy={sortCommentsBy}
+                                        hideTitle={true}
                                     />
                                     <div className="form__feedback">
                                         <span>
@@ -356,6 +373,7 @@ const FormEditFeature = ({
                                         task={feature}
                                         sortCommentsBy={sortCommentsBy}
                                         commentType="featureComment"
+                                        isEditMode={isEditMode}
                                     />
                                 </div>
                             </div>
@@ -364,45 +382,90 @@ const FormEditFeature = ({
                     {isUserLoggedIn &&
                     canCreateEditTasksFeatures(project.id) ? (
                         <Form.Footer justify>
-                            <ButtonIcon
-                                iconType="trash"
-                                hasBorder
-                                onClick={() =>
-                                    setOpenAlertBoxForDeleteAction(true)
-                                }
-                            />
-                            <div className="form__footer-group">
-                                <BoxButtonUpvote
-                                    project={project}
-                                    showIcon={true}
-                                    upvotable={feature}
-                                    upvotableType="feature"
-                                    showUpvotesCount={false}
-                                    invalidateQueries={[
-                                        [`feature/show`, feature.id],
-                                        [
-                                            'project/features/index',
-                                            project.slug,
-                                            queryArgs,
-                                        ],
-                                    ]}
-                                />
-                                <Button
-                                    type="button"
-                                    color="is-transparent"
-                                    modifier="rectangular"
-                                    onClick={handleClickCloseButton}
-                                >
-                                    Close
-                                </Button>
-                                <Button
-                                    type="submit"
-                                    modifier="rectangular"
-                                    color="is-red"
-                                >
-                                    Update
-                                </Button>
-                            </div>
+                            {isEditMode ? (
+                                <>
+                                    <ButtonIcon
+                                        iconType="trash"
+                                        hasBorder
+                                        onClick={() =>
+                                            setOpenAlertBoxForDeleteAction(true)
+                                        }
+                                    />
+                                    <div className="form__footer-group">
+                                        <BoxButtonUpvote
+                                            project={project}
+                                            showIcon={true}
+                                            upvotable={feature}
+                                            upvotableType="feature"
+                                            showUpvotesCount={false}
+                                            invalidateQueries={[
+                                                [`feature/show`, feature.id],
+                                                [
+                                                    'project/features/index',
+                                                    project.slug,
+                                                    queryArgs,
+                                                ],
+                                            ]}
+                                        />
+                                        <Button
+                                            type="button"
+                                            color="is-transparent"
+                                            modifier="rectangular"
+                                            onClick={handleClickCloseButton}
+                                        >
+                                            Close
+                                        </Button>
+                                        <Button
+                                            type="submit"
+                                            modifier="rectangular"
+                                            color="is-red"
+                                        >
+                                            Update
+                                        </Button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div></div>
+                                    <div className="form__footer-group">
+                                        <BoxButtonUpvote
+                                            project={project}
+                                            showUpvotesCount={false}
+                                            showIcon={true}
+                                            upvotable={feature}
+                                            upvotableType="feature"
+                                            invalidateQueries={[
+                                                [`feature/show`, feature.id],
+                                                [
+                                                    'project/features/index',
+                                                    project.slug,
+                                                    queryArgs,
+                                                ],
+                                            ]}
+                                        />
+                                        <Button
+                                            type="button"
+                                            color="is-transparent"
+                                            modifier="rectangular"
+                                            onClick={handleClickCloseButton}
+                                        >
+                                            Close
+                                        </Button>
+                                        <Button
+                                            type="button"
+                                            color="is-transparent"
+                                            modifier="rectangular"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setIsEditMode(true);
+                                            }}
+                                        >
+                                            Edit Settings
+                                        </Button>
+                                    </div>
+                                </>
+                            )}
                         </Form.Footer>
                     ) : (
                         <Form.Footer justify>

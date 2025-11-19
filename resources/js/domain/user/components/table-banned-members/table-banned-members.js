@@ -174,7 +174,7 @@ const TableBannedMembers = ({ members, setCurrentTablePage }) => {
 
     return (
         <Fragment>
-            {page.length > 0 && (
+            {members.meta.total >= 10 && (
                 <div className="table__actions">
                     <div className="table__actions-left">
                         <BulkActionsSelect
@@ -273,7 +273,7 @@ const TableBannedMembers = ({ members, setCurrentTablePage }) => {
                     </Table>
                 </div>
             </div>
-            {page.length > 0 && (
+            {members.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}

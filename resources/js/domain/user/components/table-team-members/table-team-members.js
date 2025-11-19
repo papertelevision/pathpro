@@ -226,6 +226,7 @@ const TableTeamMembers = ({
                     previousPage={previousPage}
                     gotoPage={gotoPage}
                     isAnyCheckBoxChecked={isAnyCheckBoxChecked}
+                    totalEntries={teamMembers.meta.total}
                 />
             )}
 
@@ -268,15 +269,12 @@ const TableTeamMembers = ({
                                                     >
                                                         {cell.column.id ===
                                                         'member' ? (
-                                                            <TooltipUserAvatar
-                                                                user={
-                                                                    row.original
-                                                                        .member
-                                                                }
-                                                                projectSlug={
-                                                                    projectSlug
-                                                                }
-                                                            />
+                                                            <NavLink
+                                                                to={`/team-members/${row.original.id}`}
+                                                                end
+                                                            >
+                                                                {row.original.member.username}
+                                                            </NavLink>
                                                         ) : cell.column.id ===
                                                           'email' ? (
                                                             <NavLink
@@ -307,7 +305,7 @@ const TableTeamMembers = ({
                     </Table>
                 </div>
             </div>
-            {page.length > 0 && (
+            {teamMembers.meta.total >= 10 && (
                 <div className="table__actions flex-end">
                     <TablePagination
                         canPreviousPage={canPreviousPage}
@@ -339,7 +337,7 @@ const TableTeamMembers = ({
                     {
                         title: 'Ban member',
                         description:
-                            'This option will ban this member from the project, and will prevent<br/> the user from rejoining the project unless you remove the ban.',
+                            'This option will ban this member from the project, and will prevent the user from rejoining the project unless you remove the ban.',
                         handler: (e) => setBanMembers(e.target.checked),
                     },
                 ]}

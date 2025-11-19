@@ -289,10 +289,23 @@
 
     .accordion__footer {
         display: none;
+
+        &--no-description {
+            display: block;
+            margin: 5px 0 0;
+            padding: 11px 0 0;
+            border-top: 1px solid $color-gray-e6;
+        }
     }
 
     .accordion__body.active ~ .accordion__footer {
         display: block;
+        margin: 5px 0 0;
+        padding: 11px 0 0;
+        border-top: 1px solid $color-gray-e6;
+    }
+
+    .accordion__divider {
         margin: 5px 0 0;
         padding: 11px 0 0;
         border-top: 1px solid $color-gray-e6;

@@ -101,21 +101,25 @@ const TaskSubtask = ({
                                     </div>
                                 </AccordionHeader.Left>
                             </AccordionHeader>
-                            <AccordionBody index={idx}>
-                                {subtask.task_status.title === 'Complete' ? (
-                                    <span>{subtask.task_status.title}</span>
-                                ) : (
-                                    <i>{subtask.task_status.title}</i>
-                                )}
-                                <div className="accordion__body-wrapper__text">
-                                    {parse(
-                                        DOMPurify.sanitize(
-                                            subtask.description,
-                                            { ADD_ATTR: ['target'] }
-                                        )
+                            {subtask.description && subtask.description.replace(/<[^>]*>/g, '').trim() ? (
+                                <AccordionBody index={idx}>
+                                    {subtask.task_status.title === 'Complete' ? (
+                                        <span>{subtask.task_status.title}</span>
+                                    ) : (
+                                        <i>{subtask.task_status.title}</i>
                                     )}
-                                </div>
-                            </AccordionBody>
+                                    <div className="accordion__body-wrapper__text">
+                                        {parse(
+                                            DOMPurify.sanitize(
+                                                subtask.description,
+                                                { ADD_ATTR: ['target'] }
+                                            )
+                                        )}
+                                    </div>
+                                </AccordionBody>
+                            ) : (
+                                <div style={{ margin: '5px 0 0', padding: '11px 0 0', borderTop: '1px solid #e6e6e6' }}></div>
+                            )}
                             <AccordionFooter>
                                 <TaskFooter
                                     task={subtask}

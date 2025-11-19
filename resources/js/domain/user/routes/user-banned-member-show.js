@@ -41,11 +41,7 @@ const UserBannedMemberShow = () => {
                 setIsFormDisabled(true);
                 setIsPopupNotificationVisible(true);
                 setOpenAlertBox(false);
-                navigate(
-                    projectSlug
-                        ? `/${projectSlug}/banned-members`
-                        : '/banned-members'
-                );
+                navigate('/banned-members');
             },
         });
 

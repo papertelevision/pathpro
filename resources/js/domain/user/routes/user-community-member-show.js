@@ -82,11 +82,7 @@ const UserCommunityMemberShow = () => {
             <Subheader>
                 <Subheader.Left>
                     <NavLink
-                        to={
-                            projectSlug
-                                ? `/${projectSlug}/community-members`
-                                : '/community-members'
-                        }
+                        to="/community-members"
                         className="btn-back"
                     >
                         Go Back
@@ -123,7 +119,7 @@ const UserCommunityMemberShow = () => {
                     {
                         title: 'Ban member',
                         description:
-                            'This option will ban this member from the project, and will prevent<br/> the user from rejoining the project unless you remove the ban.',
+                            'This option will ban this member from the project, and will prevent the user from rejoining the project unless you remove the ban.',
                         handler: (e) => setBanMember(e.target.checked),
                     },
                 ]}

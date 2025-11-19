@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router';
@@ -14,10 +14,10 @@ import * as yup from 'yup';
  * Internal dependencies
  */
 import FormRowBox from '@app/components/form/form-row-box';
-import FormTextArea from '@app/components/form/form-textarea';
 import FormCheckbox from '@app/components/form/form-checkbox';
 import FormInlineFileUpload from '@app/components/form/form-inline-file-upload';
 import Button from '@app/components/button/button';
+import RichTextEditor from '@app/components/rich-text-editor/rich-text-editor';
 import useCommentStoreMutation from '@app/data/comment/use-comment-store-mutation';
 import useProjectCommunityMemberStoreMutation from '@app/data/project/use-project-community-member-store-mutation';
 import { usePermissionsContextApi } from '@app/lib/permissions-context-api';
@@ -31,7 +31,6 @@ const schema = yup.object().shape({
 const AddCommentSection = ({ task, project, modelType, sortCommentsBy, hideTitle = false }) => {
     const { isUserLoggedIn, canPinComments, isAuthUserAssignToProject } =
         usePermissionsContextApi();
-    const [textAreaValue, setTextAreaValue] = useState('');
 
     const location = useLocation();
     const queryArgs = qs.parse(location?.search, { ignoreQueryPrefix: true });
@@ -90,7 +89,6 @@ const AddCommentSection = ({ task, project, modelType, sortCommentsBy, hideTitle
 
         mutateCommentStore(payload, {
             onSuccess: () => {
-                setTextAreaValue('');
                 methods.reset();
 
                 invalidateQueriesArray.map((query) =>
@@ -103,13 +101,12 @@ const AddCommentSection = ({ task, project, modelType, sortCommentsBy, hideTitle
     return isAuthUserAssignToProject(project.id) ? (
         <FormProvider {...methods}>
             <div className="form__suggestion">
-                <FormTextArea
-                    id="content"
+                <RichTextEditor
+                    id={`comment-${task.id}`}
                     name="content"
-                    title={hideTitle ? "" : "Add Feedback or Suggestion:"}
-                    hideErrorMessage
-                    textAreaValue={textAreaValue}
-                    setTextAreaValue={setTextAreaValue}
+                    label={hideTitle ? "" : "Add Feedback or Suggestion:"}
+                    placeholder="Add your comment..."
+                    hideErrorMessage={true}
                 />
                 <div className="form__suggestion-actions">
                     {(canPinComments(task.project_id) ||

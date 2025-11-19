@@ -138,6 +138,7 @@ const FormEditAccount = () => {
                                     name="avatar"
                                     uploadedFile={authUser.avatar}
                                     setUploadedFile={setUserAvatar}
+                                    user={authUser}
                                 />
                                 <FormTextArea
                                     title="Your Bio"

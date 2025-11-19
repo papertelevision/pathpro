@@ -185,13 +185,16 @@ const FormEditTaskLeftCol = ({
                         </div>
                     )}
                     <div className="form__col-public">
-                        <div className="form__col-public__description">
-                            {parse(
-                                DOMPurify.sanitize(task.description, {
-                                    ADD_ATTR: ['target'],
-                                })
-                            )}
-                        </div>
+                        {task.description && task.description.replace(/<[^>]*>/g, '').trim() && (
+                            <div className="form__col-public__description form__col-public__description--scrollable">
+                                <h4 className="form__col-public__description-header">Description</h4>
+                                {parse(
+                                    DOMPurify.sanitize(task.description, {
+                                        ADD_ATTR: ['target'],
+                                    })
+                                )}
+                            </div>
+                        )}
                         {task.attachments && task.attachments.length > 0 && (
                             <div className="form__attachments">
                                 <h4>Attachments ({task.attachments.length})</h4>

@@ -152,16 +152,20 @@ const Task = ({
                                     multiTasks={task.are_subtasks_allowed}
                                     taskPopularity={taskPopularity}
                                 />
-                                <BoxContent>
-                                    <div className="box__content-text">
-                                        {parse(
-                                            DOMPurify.sanitize(
-                                                task.description,
-                                                { ADD_ATTR: ['target'] }
-                                            )
-                                        )}
-                                    </div>
-                                </BoxContent>
+                                {task.description && task.description.replace(/<[^>]*>/g, '').trim() ? (
+                                    <BoxContent>
+                                        <div className="box__content-text">
+                                            {parse(
+                                                DOMPurify.sanitize(
+                                                    task.description,
+                                                    { ADD_ATTR: ['target'] }
+                                                )
+                                            )}
+                                        </div>
+                                    </BoxContent>
+                                ) : (
+                                    <div style={{ margin: '10px 0', borderTop: '1px solid #eeeeee' }}></div>
+                                )}
                                 <TaskFooter
                                     task={task}
                                     project={project}

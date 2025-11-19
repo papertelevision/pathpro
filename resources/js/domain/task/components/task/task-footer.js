@@ -21,6 +21,7 @@ import BoxButtonUpvote from '@app/components/box/box-button-upvote';
 import useSubscriptionStoreMutation from '@app/data/subscription/use-subscription-store-mutation';
 import useSubscriptionDestroyMutation from '@app/data/subscription/use-subscription-destroy-mutation';
 import { usePermissionsContextApi } from '@app/lib/permissions-context-api';
+import { dateFormat } from '@app/lib/date-format';
 
 const projectSlug = document.getElementById('root').getAttribute('projectSlug');
 
@@ -53,23 +54,7 @@ const TaskFooter = ({ task, project, taskPopularity }) => {
     return (
         <BoxFooter>
             <BoxFooter.Left>
-                {task.comments_count > 0 && task.are_comments_enabled && (
-                    <NavLink
-                        to={`/task/${task.id}`}
-                        className="box__footer-comments-wrapper"
-                        data-tooltip-id="tooltip"
-                        data-tooltip-float
-                        data-tooltip-variant="light"
-                        data-tooltip-content={`${task.comments_count} suggestions have been made by community members for this feature/idea.`}
-                    >
-                        <Icon type="comments" />
-                        <span className="box__footer-comments-count">
-                            {task.comments_count}
-                        </span>
-                    </NavLink>
-                )}
-
-{((task.creator && task.is_creator_visible) || (task.team_members.length > 0 && task.are_team_members_visible)) && (
+                {((task.creator && task.is_creator_visible) || (task.team_members.length > 0 && task.are_team_members_visible)) && (
                     <div
                         className="task-avatars"
                         data-tooltip-id="tooltip"
@@ -85,10 +70,10 @@ const TaskFooter = ({ task, project, taskPopularity }) => {
                                 const showCreator = task.is_creator_visible && task.creator;
 
                                 if (showCreator && teamMemberNames) {
-                                    return `Created by: <span style="color: #24bffa">@${creatorName}</span><br>Assigned to: ${teamMemberNames}`;
+                                    return `Created by: <span style="color: #24bffa">@${creatorName}</span> <span style="font-size: calc(100% - 2px); color: #788994;">on ${dateFormat(task.created_at, project.date_format, true)}</span><br>Assigned to: ${teamMemberNames}`;
                                 }
                                 if (showCreator) {
-                                    return `Created by: <span style="color: #24bffa">@${creatorName}</span>`;
+                                    return `Created by: <span style="color: #24bffa">@${creatorName}</span> <span style="font-size: calc(100% - 2px); color: #788994;">on ${dateFormat(task.created_at, project.date_format, true)}</span>`;
                                 }
                                 if (teamMemberNames) {
                                     return `Assigned to: ${teamMemberNames}`;
@@ -147,6 +132,22 @@ const TaskFooter = ({ task, project, taskPopularity }) => {
             </BoxFooter.Left>
 
             <BoxFooter.Right>
+                {task.comments_count > 0 && task.are_comments_enabled && (
+                    <NavLink
+                        to={`/task/${task.id}`}
+                        className="box__footer-comments-wrapper"
+                        data-tooltip-id="tooltip"
+                        data-tooltip-float
+                        data-tooltip-variant="light"
+                        data-tooltip-content={`${task.comments_count} suggestions have been made by community members for this feature/idea.`}
+                    >
+                        <Icon type="comments" />
+                        <span className="box__footer-comments-count">
+                            {task.comments_count}
+                        </span>
+                    </NavLink>
+                )}
+
                 {isUserLoggedIn && (
                     <BoxButton
                         checked={subscriptionId}
