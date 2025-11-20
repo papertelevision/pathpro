@@ -24,6 +24,7 @@ class Plan extends Model
         'is_recommended' => 'boolean',
         'is_white_labeled' => 'boolean',
         'are_private_projects_allowed' => 'boolean',
+        'are_file_attachments_allowed' => 'boolean',
     ];
 
     /**

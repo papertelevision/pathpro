@@ -29,7 +29,7 @@ const schema = yup.object().shape({
 });
 
 const AddCommentSection = ({ task, project, modelType, sortCommentsBy, hideTitle = false }) => {
-    const { isUserLoggedIn, canPinComments, isAuthUserAssignToProject } =
+    const { isUserLoggedIn, canPinComments, isAuthUserAssignToProject, canUploadAttachments } =
         usePermissionsContextApi();
 
     const location = useLocation();
@@ -109,7 +109,7 @@ const AddCommentSection = ({ task, project, modelType, sortCommentsBy, hideTitle
                     hideErrorMessage={true}
                 />
                 <div className="form__suggestion-actions">
-                    {(canPinComments(task.project_id) ||
+                    {canUploadAttachments && (canPinComments(task.project_id) ||
                       project.team_members?.some(member => member.id === isUserLoggedIn?.id) ||
                       project.creator?.id === isUserLoggedIn?.id) && (
                         <FormInlineFileUpload uniqueId="main-comment" />

@@ -56,7 +56,7 @@ const FormAddTask = ({
     const location = useLocation();
     const queryArgs = qs.parse(location?.search, { ignoreQueryPrefix: true });
 
-    const { canPinComments } = usePermissionsContextApi();
+    const { canPinComments, canUploadAttachments } = usePermissionsContextApi();
 
     const { taskVisibilities: visibilities } = useQueryContextApi();
     const { mutate: mutateTasks } = useTaskStoreMutation(
@@ -180,11 +180,13 @@ const FormAddTask = ({
                             name="description"
                             placeholder="Describe your task, feature, goal or idea here."
                         />
-                        <FormFileUpload
-                            id="attachments"
-                            name="attachments"
-                            marginBottom
-                        />
+                        {canUploadAttachments && (
+                            <FormFileUpload
+                                id="attachments"
+                                name="attachments"
+                                marginBottom
+                            />
+                        )}
                         <FormSelect
                             title="Type"
                             id="task_type_id"
