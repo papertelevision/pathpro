@@ -40,6 +40,11 @@ class EditPlan extends EditRecord
         $record = $this->record;
         $recordStripeData = $record->provider_payload;
 
+        // If no Stripe data exists (e.g., local testing or free plans), skip Stripe update
+        if (!$recordStripeData || !isset($recordStripeData['stripe_id'])) {
+            return $recordStripeData ?? [];
+        }
+
         $stripeClient = Cashier::stripe();
 
         $stripeProduct = $stripeClient->products->retrieve(

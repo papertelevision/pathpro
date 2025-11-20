@@ -58,6 +58,7 @@ class AuthUserResource extends JsonResource
             'can_create_projects' => $canCreateProjects,
             'can_assign_team_members' => $this->canAssignTeamMembers(),
             'can_have_community_members' => $this->canHaveCommunityMembers(),
+            'can_upload_attachments' => $this->canUploadAttachments(),
             'has_to_create_project' => $hasToCreateProject,
             'is_page_white_labeled' => $this?->is_page_white_labeled,
             'are_private_projects_allowed' => $arePrivateProjectsAllowed,

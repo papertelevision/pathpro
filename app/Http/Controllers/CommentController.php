@@ -45,7 +45,10 @@ class CommentController extends Controller
         ]);
 
         // Handle file attachments
-        if (isset($validated['attachments']) && is_array($validated['attachments'])) {
+        if (isset($validated['attachments']) && is_array($validated['attachments']) && count($validated['attachments']) > 0) {
+            if (!$authUser->canUploadAttachments()) {
+                abort(403, 'Your plan does not allow file attachments.');
+            }
             foreach ($validated['attachments'] as $attachment) {
                 $comment->addMedia($attachment)->toMediaCollection('attachments');
             }

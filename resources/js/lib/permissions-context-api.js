@@ -112,6 +112,7 @@ const PermissionsContextApiProvider = ({ children }) => {
                 isAuthUserAssignedToAnyProjects,
                 canCreateProjects: authUser?.can_create_projects,
                 canAssignTeamMembers: authUser?.can_assign_team_members,
+                canUploadAttachments: authUser?.can_upload_attachments,
                 canCreateEditTasksFeatures: (projectId) =>
                     checkAuthUserPermission(
                         'can-create-edit-tasks-features',
