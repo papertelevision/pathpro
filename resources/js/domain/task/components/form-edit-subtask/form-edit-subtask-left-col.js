@@ -34,7 +34,7 @@ const FormEditSubtaskLeftCol = ({
     handleMarkAsComplete,
 }) => {
     const { taskVisibilities: visibilities } = useQueryContextApi();
-    const { canCreateEditTasksFeatures, isUserLoggedIn, isAuthUserAdmitOrTeamMember, canUploadAttachments } =
+    const { canCreateEditTasksFeatures, isUserLoggedIn, isAuthUserAdmitOrTeamMember } =
         usePermissionsContextApi();
 
     const getFileIcon = (fileName, mimeType = null) => {
@@ -343,14 +343,12 @@ const FormEditSubtaskLeftCol = ({
                         name="description"
                         placeholder="Describe your task, feature, goal or idea here."
                     />
-                    {canUploadAttachments && (
-                        <FormFileUpload
-                            id="attachments"
-                            name="attachments"
-                            existingAttachments={subtask.attachments || []}
-                            marginBottom
-                        />
-                    )}
+                    <FormFileUpload
+                        id="attachments"
+                        name="attachments"
+                        existingAttachments={subtask.attachments || []}
+                        marginBottom
+                    />
                     <FormSelect
                         title="Type"
                         id="task_type_id"

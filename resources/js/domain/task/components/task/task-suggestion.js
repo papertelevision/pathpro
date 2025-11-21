@@ -54,7 +54,6 @@ const TaskSuggestion = ({
         isUserLoggedIn,
         isAuthUserAdmitOrTeamMember,
         isAuthUserAssignToProject,
-        canUploadAttachments,
     } = usePermissionsContextApi();
 
     const refToSuggestion = useRef(null);
@@ -186,7 +185,7 @@ const TaskSuggestion = ({
                             parse(DOMPurify.sanitize(suggestion.content, { ADD_ATTR: ['target'] }))
                         )}
                     </p>
-                    {canUploadAttachments && suggestion.attachments && suggestion.attachments.length > 0 && (
+                    {suggestion.attachments && suggestion.attachments.length > 0 && (
                         <AttachmentList
                             attachments={suggestion.attachments}
                             canDelete={authUser?.id === suggestion.author.id && isEditMode}

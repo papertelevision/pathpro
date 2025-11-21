@@ -35,7 +35,7 @@ const TaskSuggestionReply = ({ reply, project, sortCommentsBy, isEditMode = fals
     const [openAlertBox, setOpenAlertBox] = useState(false);
     const queryClient = useQueryClient();
 
-    const { isUserLoggedIn, authUser, canDeleteComments, canUpdateProject, canUploadAttachments } =
+    const { isUserLoggedIn, authUser, canDeleteComments, canUpdateProject } =
         usePermissionsContextApi();
 
     const { mutate: mutateCommentDestroy } = useCommentDestroyMutation(
@@ -101,7 +101,7 @@ const TaskSuggestionReply = ({ reply, project, sortCommentsBy, isEditMode = fals
                     <p className="suggestion__content reply">
                         {parse(DOMPurify.sanitize(reply.content, { ADD_ATTR: ['target'] }))}
                     </p>
-                    {canUploadAttachments && reply.attachments && reply.attachments.length > 0 && (
+                    {reply.attachments && reply.attachments.length > 0 && (
                         <AttachmentList
                             attachments={reply.attachments}
                             canDelete={authUser?.id === reply.author.id && isEditMode}

@@ -65,10 +65,7 @@ class TaskController extends Controller
         ]);
 
         // Handle file attachments
-        if (isset($validated['attachments']) && is_array($validated['attachments']) && count($validated['attachments']) > 0) {
-            if (!$user->canUploadAttachments()) {
-                abort(403, 'Your plan does not allow file attachments.');
-            }
+        if (isset($validated['attachments']) && is_array($validated['attachments'])) {
             foreach ($validated['attachments'] as $attachment) {
                 $task->addMedia($attachment)->toMediaCollection('attachments');
             }
@@ -128,10 +125,7 @@ class TaskController extends Controller
         ]);
 
         // Handle file attachments
-        if (isset($validated['attachments']) && is_array($validated['attachments']) && count($validated['attachments']) > 0) {
-            if (!$request->user()->canUploadAttachments()) {
-                abort(403, 'Your plan does not allow file attachments.');
-            }
+        if (isset($validated['attachments']) && is_array($validated['attachments'])) {
             foreach ($validated['attachments'] as $attachment) {
                 $task->addMedia($attachment)->toMediaCollection('attachments');
             }

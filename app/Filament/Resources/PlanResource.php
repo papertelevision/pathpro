@@ -102,7 +102,6 @@ class PlanResource extends Resource
                 Checkbox::make('is_recommended'),
                 Checkbox::make('is_white_labeled'),
                 Checkbox::make('are_private_projects_allowed'),
-                Checkbox::make('are_file_attachments_allowed'),
             ])
             ->columns(1);
     }

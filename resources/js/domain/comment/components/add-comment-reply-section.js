@@ -32,7 +32,7 @@ const AddCommentReplySection = ({
     handleShowReplySection,
     sortCommentsBy,
 }) => {
-    const { isUserLoggedIn, canPinComments, canUploadAttachments } = usePermissionsContextApi();
+    const { isUserLoggedIn, canPinComments } = usePermissionsContextApi();
 
     const queryClient = useQueryClient();
 
@@ -124,7 +124,7 @@ const AddCommentReplySection = ({
                     >
                         Submit
                     </Button>
-                    {canUploadAttachments && (canPinComments(task.project_id) ||
+                    {(canPinComments(task.project_id) ||
                       project.team_members?.some(member => member.id === isUserLoggedIn?.id) ||
                       project.creator?.id === isUserLoggedIn?.id) && (
                         <FormInlineFileUpload uniqueId={`reply-${suggestion.id}`} />

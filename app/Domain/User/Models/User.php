@@ -351,25 +351,6 @@ class User extends Authenticatable implements HasMedia, FilamentUser
     }
 
     /**
-     * Determines whether the User can upload file attachments.
-     *
-     * @return bool
-     */
-    public function canUploadAttachments(): bool
-    {
-        if ($this->isSuperAdmin()) return true;
-
-        $plan = $this->plan;
-        if ($plan) {
-            $plan = $plan->plan;
-
-            return $plan->are_file_attachments_allowed ?? false;
-        }
-
-        return false;
-    }
-
-    /**
      * Get the count of the assigned team members to the projects created by the user.
      *
      * @return int
